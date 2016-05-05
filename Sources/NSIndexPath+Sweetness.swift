@@ -1,13 +1,26 @@
 import UIKit
 
-extension NSIndexPath {
-    enum Direction {
+public extension NSIndexPath {
+    public enum Direction {
         case Forward
         case Backward
         case Same
     }
 
-    func indexPaths(collectionView: UICollectionView) -> [NSIndexPath] {
+    public func compareDirection(indexPath: NSIndexPath) -> Direction {
+        let current = self.row * self.section
+        let coming = indexPath.row * indexPath.section
+
+        if current == coming {
+            return .Same
+        } else if current < coming {
+            return .Forward
+        } else {
+            return .Backward
+        }
+    }
+
+    public func indexPaths(collectionView collectionView: UICollectionView) -> [NSIndexPath] {
         var indexPaths = [NSIndexPath]()
 
         let sections = collectionView.numberOfSections()
@@ -21,9 +34,9 @@ extension NSIndexPath {
         return indexPaths
     }
 
-    func next(collectionView: UICollectionView) -> NSIndexPath? {
+    public func next(collectionView collectionView: UICollectionView) -> NSIndexPath? {
         var found = false
-        let indexPaths = self.indexPaths(collectionView)
+        let indexPaths = self.indexPaths(collectionView: collectionView)
         for indexPath in  indexPaths {
             if found == true {
                 return indexPath
@@ -37,9 +50,9 @@ extension NSIndexPath {
         return nil
     }
 
-    func previous(collectionView: UICollectionView) -> NSIndexPath? {
+    public func previous(collectionView collectionView: UICollectionView) -> NSIndexPath? {
         var previousIndexPath: NSIndexPath?
-        let indexPaths = self.indexPaths(collectionView)
+        let indexPaths = self.indexPaths(collectionView: collectionView)
         for indexPath in indexPaths {
             if indexPath == self {
                 return previousIndexPath
@@ -51,7 +64,7 @@ extension NSIndexPath {
         return nil
     }
 
-    class func indexPathForIndex(collectionView: UICollectionView, index: Int) -> NSIndexPath? {
+    public class func indexPathForIndex(collectionView collectionView: UICollectionView, index: Int) -> NSIndexPath? {
         var count = 0
         let sections = collectionView.numberOfSections()
         for section in 0..<sections {
@@ -66,7 +79,7 @@ extension NSIndexPath {
         return nil
     }
 
-    func totalRow(collectionView: UICollectionView) -> Int {
+    public func totalRow(collectionView collectionView: UICollectionView) -> Int {
         var count = 0
         let sections = collectionView.numberOfSections()
         for section in 0..<sections {
@@ -77,18 +90,5 @@ extension NSIndexPath {
         }
 
         return count + self.row
-    }
-
-    func compareDirection(indexPath: NSIndexPath) -> Direction {
-        let current = self.row * self.section
-        let coming = indexPath.row * indexPath.section
-
-        if current == coming {
-            return .Same
-        } else if current < coming {
-            return .Forward
-        } else {
-            return .Backward
-        }
     }
 }
