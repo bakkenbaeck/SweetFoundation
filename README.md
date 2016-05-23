@@ -6,9 +6,6 @@
 
 ## Usage
 
-```swift
-<API>
-```
 
 ## Installation
 
