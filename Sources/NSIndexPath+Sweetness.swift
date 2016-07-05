@@ -2,21 +2,28 @@ import UIKit
 
 public extension NSIndexPath {
     public enum Direction {
-        case Forward
-        case Backward
         case Same
+        case Before
+        case Ahead
     }
 
-    public func compareDirection(indexPath: NSIndexPath) -> Direction {
-        let current = self.row * self.section
-        let coming = indexPath.row * indexPath.section
-
-        if current == coming {
+    private func comparePosition(ownRow ownRow: Int, otherRow: Int) -> Direction {
+        if ownRow == otherRow {
             return .Same
-        } else if current < coming {
-            return .Forward
+        } else if ownRow < otherRow {
+            return .Before
         } else {
-            return .Backward
+            return .Ahead
+        }
+    }
+
+    public func comparePosition(to indexPath: NSIndexPath) -> Direction {
+        if self.section == indexPath.section {
+            return self.comparePosition(ownRow: self.row, otherRow: indexPath.row)
+        } else if self.section < indexPath.section {
+            return .Before
+        } else {
+            return .Ahead
         }
     }
 
@@ -37,7 +44,7 @@ public extension NSIndexPath {
     public func next(collectionView collectionView: UICollectionView) -> NSIndexPath? {
         var found = false
         let indexPaths = self.indexPaths(collectionView: collectionView)
-        for indexPath in  indexPaths {
+        for indexPath in indexPaths {
             if found == true {
                 return indexPath
             }
@@ -64,7 +71,7 @@ public extension NSIndexPath {
         return nil
     }
 
-    public class func indexPathForIndex(collectionView collectionView: UICollectionView, index: Int) -> NSIndexPath? {
+    public class func firstIndexPathForIndex(collectionView collectionView: UICollectionView, index: Int) -> NSIndexPath? {
         var count = 0
         let sections = collectionView.numberOfSections()
         for section in 0..<sections {
@@ -79,7 +86,7 @@ public extension NSIndexPath {
         return nil
     }
 
-    public func totalRow(collectionView collectionView: UICollectionView) -> Int {
+    public func totalRowCount(collectionView collectionView: UICollectionView) -> Int {
         var count = 0
         let sections = collectionView.numberOfSections()
         for section in 0..<sections {
