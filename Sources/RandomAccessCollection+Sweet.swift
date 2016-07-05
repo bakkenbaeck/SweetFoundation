@@ -1,16 +1,18 @@
 import Foundation
 
-extension Array {
+extension CollectionType where Index == Int {
 
-    func enumerateWithNext() -> [(Element, Element?)] {
+    typealias InternalElement = Generator.Element
+
+    func enumerateWithNext() -> [(Generator.Element, Generator.Element?)] {
         let count = self.count
-        var array = [(Element, Element?)]()
+        var array = [(InternalElement, InternalElement?)]()
 
         for (index, item) in self.enumerate() {
-            var nextItem: Element? = .None
+            var nextItem: Generator.Element? = .None
             let nextIndex = index + 1
 
-            if nextIndex <  count {
+            if nextIndex < count {
                 nextItem = self[nextIndex]
             }
 
@@ -20,11 +22,11 @@ extension Array {
         return array
     }
 
-    func enumerateWithPrevious() -> [(Element?, Element)] {
-        var array = [(Element?, Element)]()
+    func enumerateWithPrevious() -> [(Generator.Element?, Generator.Element)] {
+        var array = [(InternalElement?, InternalElement)]()
 
         for (index, item) in self.enumerate() {
-            var previousItem: Element? = nil
+            var previousItem: Generator.Element? = nil
             let previousIndex = index - 1
 
             if previousIndex >= 0 && previousIndex < index {
