@@ -1,20 +1,39 @@
 import Foundation
 
-extension CollectionType {
-    func enumerateWithNext() -> [(Any, Any?)] {
-        let count = self.count as! Int
-        var array = [(Any, Any?)]()
+extension Array {
+
+    func enumerateWithNext() -> [(Element, Element?)] {
+        let count = self.count
+        var array = [(Element, Element?)]()
 
         for (index, item) in self.enumerate() {
-            var nextItem: Any? = nil
+            var nextItem: Element? = .None
             let nextIndex = index + 1
 
             if nextIndex <  count {
-                nextItem = self[nextIndex as! Index]
+                nextItem = self[nextIndex]
             }
 
             array.append((item, nextItem))
         }
+
+        return array
+    }
+
+    func enumerateWithPrevious() -> [(Element?, Element)] {
+        var array = [(Element?, Element)]()
+
+        for (index, item) in self.enumerate() {
+            var previousItem: Element? = nil
+            let previousIndex = index - 1
+
+            if previousIndex >= 0 && previousIndex < index {
+                previousItem = self[previousIndex]
+            }
+
+            array.append((previousItem, item))
+        }
+
         return array
     }
 }
