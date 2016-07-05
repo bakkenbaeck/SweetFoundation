@@ -2,21 +2,28 @@ import UIKit
 
 public extension NSIndexPath {
     public enum Direction {
-        case Forward
-        case Backward
         case Same
+        case Before
+        case Ahead
     }
 
-    public func compareDirection(indexPath: NSIndexPath) -> Direction {
-        let current = self.row * self.section
-        let coming = indexPath.row * indexPath.section
-
-        if current == coming {
+    private func comparePosition(ownRow ownRow: Int, otherRow: Int) -> Direction {
+        if ownRow == otherRow {
             return .Same
-        } else if current < coming {
-            return .Forward
+        } else if ownRow < otherRow {
+            return .Before
         } else {
-            return .Backward
+            return .Ahead
+        }
+    }
+
+    public func comparePosition(to indexPath: NSIndexPath) -> Direction {
+        if self.section == indexPath.section {
+            return self.comparePosition(ownRow: self.row, otherRow: indexPath.row)
+        } else if self.section < indexPath.section {
+            return .Before
+        } else {
+            return .Ahead
         }
     }
 
