@@ -7,7 +7,7 @@ public extension NSIndexPath {
         case Ahead
     }
 
-    private func comparePosition(ownRow ownRow: Int, otherRow: Int) -> Direction {
+    private func comparePosition(ownRow: Int, otherRow: Int) -> Direction {
         if ownRow == otherRow {
             return .Same
         } else if ownRow < otherRow {
@@ -19,7 +19,7 @@ public extension NSIndexPath {
 
     public func comparePosition(to indexPath: NSIndexPath) -> Direction {
         if self.section == indexPath.section {
-            return self.comparePosition(ownRow: self.row, otherRow: indexPath.row)
+            return self.comparePosition(self.row, otherRow: indexPath.row)
         } else if self.section < indexPath.section {
             return .Before
         } else {
