@@ -44,7 +44,7 @@ public extension NSIndexPath {
     public func next(collectionView collectionView: UICollectionView) -> NSIndexPath? {
         var found = false
         let indexPaths = self.indexPaths(collectionView: collectionView)
-        for indexPath in  indexPaths {
+        for indexPath in indexPaths {
             if found == true {
                 return indexPath
             }
@@ -71,7 +71,7 @@ public extension NSIndexPath {
         return nil
     }
 
-    public class func indexPathForIndex(collectionView collectionView: UICollectionView, index: Int) -> NSIndexPath? {
+    public class func firstIndexPathForIndex(collectionView collectionView: UICollectionView, index: Int) -> NSIndexPath? {
         var count = 0
         let sections = collectionView.numberOfSections()
         for section in 0..<sections {
@@ -86,7 +86,7 @@ public extension NSIndexPath {
         return nil
     }
 
-    public func totalRow(collectionView collectionView: UICollectionView) -> Int {
+    public func totalRowCount(collectionView collectionView: UICollectionView) -> Int {
         var count = 0
         let sections = collectionView.numberOfSections()
         for section in 0..<sections {
