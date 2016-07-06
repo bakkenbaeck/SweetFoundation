@@ -10,6 +10,8 @@
 		147E2AB71CDB7EBB00BB9AA6 /* NSIndexPath+Sweetness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147E2AB61CDB7EBB00BB9AA6 /* NSIndexPath+Sweetness.swift */; };
 		14A139B41AEFC72B00AD732F /* NSIndexPathTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A139B31AEFC72B00AD732F /* NSIndexPathTests.swift */; };
 		14C47E0E1CD2AE5F004A48DF /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 14C47E0D1CD2AE5F004A48DF /* Info.plist */; };
+		9F4799171D2BA3770042BCBE /* CollectionType+Sweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4799161D2BA3770042BCBE /* CollectionType+Sweet.swift */; };
+		9F4799191D2BA4550042BCBE /* CollectionTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4799181D2BA4550042BCBE /* CollectionTypeTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -37,6 +39,8 @@
 		14C47E0D1CD2AE5F004A48DF /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		14F393951CC6512400616696 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		14F393961CC6517E00616696 /* LICENSE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
+		9F4799161D2BA3770042BCBE /* CollectionType+Sweet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CollectionType+Sweet.swift"; sourceTree = "<group>"; };
+		9F4799181D2BA4550042BCBE /* CollectionTypeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionTypeTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,8 +85,9 @@
 		146D72AF1AB782920058798C /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				14A139B31AEFC72B00AD732F /* NSIndexPathTests.swift */,
 				146D72B01AB782920058798C /* Supporting Files */,
+				14A139B31AEFC72B00AD732F /* NSIndexPathTests.swift */,
+				9F4799181D2BA4550042BCBE /* CollectionTypeTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -93,6 +98,7 @@
 				146D72B11AB782920058798C /* Info.plist */,
 			);
 			name = "Supporting Files";
+			path = Tests;
 			sourceTree = "<group>";
 		};
 		14C136501AB7849300B7B07A /* Metadata */ = {
@@ -114,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				147E2AB61CDB7EBB00BB9AA6 /* NSIndexPath+Sweetness.swift */,
+				9F4799161D2BA3770042BCBE /* CollectionType+Sweet.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -193,6 +200,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				147E2AB71CDB7EBB00BB9AA6 /* NSIndexPath+Sweetness.swift in Sources */,
+				9F4799171D2BA3770042BCBE /* CollectionType+Sweet.swift in Sources */,
+				9F4799191D2BA4550042BCBE /* CollectionTypeTests.swift in Sources */,
 				14A139B41AEFC72B00AD732F /* NSIndexPathTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
