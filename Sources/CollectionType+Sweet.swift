@@ -1,12 +1,11 @@
 import Foundation
 
 extension CollectionType where Index == Int {
-
     typealias InternalElement = Generator.Element
 
     func enumeratedWithNext() -> [(Generator.Element, Generator.Element)] {
         let count: Int = self.count
-        var array = [(InternalElement, InternalElement)]()
+        var enumeratedItems = [(InternalElement, InternalElement)]()
 
         for (index, item) in self.enumerate() {
             var nextItem: Generator.Element? = .None
@@ -14,10 +13,12 @@ extension CollectionType where Index == Int {
 
             if nextIndex < count {
                 nextItem = self[nextIndex]
-                array.append((item, nextItem!))
+                if let nextItem = nextItem {
+                    enumeratedItems.append((item, nextItem))
+                }
             }
         }
 
-        return array
+        return enumeratedItems
     }
 }
