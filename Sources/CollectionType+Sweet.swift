@@ -4,7 +4,7 @@ extension Collection where Index == Int {
     typealias InternalElement = Iterator.Element
 
     func enumeratedWithNext() -> [(Iterator.Element, Iterator.Element)] {
-        let count: Int = self.count
+        let count = self.count as! Int
         var enumeratedItems = [(InternalElement, InternalElement)]()
 
         for (index, item) in self.enumerated() {
