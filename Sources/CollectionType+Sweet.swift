@@ -1,14 +1,14 @@
 import Foundation
 
-extension Collection where Index == Int {
-    typealias InternalElement = Iterator.Element
+extension CollectionType where Index == Int {
+    typealias InternalElement = Generator.Element
 
-    func enumeratedWithNext() -> [(Iterator.Element, Iterator.Element)] {
-        let count = self.count as! Int
+    func enumeratedWithNext() -> [(Generator.Element, Generator.Element)] {
+        let count: Int = self.count
         var enumeratedItems = [(InternalElement, InternalElement)]()
 
-        for (index, item) in self.enumerated() {
-            var nextItem: Iterator.Element? = .none
+        for (index, item) in self.enumerate() {
+            var nextItem: Generator.Element? = .None
             let nextIndex = index + 1
 
             if nextIndex < count {

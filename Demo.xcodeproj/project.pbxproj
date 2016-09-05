@@ -12,7 +12,6 @@
 		14C47E0E1CD2AE5F004A48DF /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 14C47E0D1CD2AE5F004A48DF /* Info.plist */; };
 		9F4799171D2BA3770042BCBE /* CollectionType+Sweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4799161D2BA3770042BCBE /* CollectionType+Sweet.swift */; };
 		9F4799191D2BA4550042BCBE /* CollectionTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4799181D2BA4550042BCBE /* CollectionTypeTests.swift */; };
-		9FB6A8961D7D57D40093ACED /* DispatchQueue+Sweetness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB6A8951D7D57D40093ACED /* DispatchQueue+Sweetness.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -42,7 +41,6 @@
 		14F393961CC6517E00616696 /* LICENSE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
 		9F4799161D2BA3770042BCBE /* CollectionType+Sweet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CollectionType+Sweet.swift"; sourceTree = "<group>"; };
 		9F4799181D2BA4550042BCBE /* CollectionTypeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionTypeTests.swift; sourceTree = "<group>"; };
-		9FB6A8951D7D57D40093ACED /* DispatchQueue+Sweetness.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Sweetness.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,7 +121,6 @@
 			children = (
 				147E2AB61CDB7EBB00BB9AA6 /* NSIndexPath+Sweetness.swift */,
 				9F4799161D2BA3770042BCBE /* CollectionType+Sweet.swift */,
-				9FB6A8951D7D57D40093ACED /* DispatchQueue+Sweetness.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -206,7 +203,6 @@
 				9F4799171D2BA3770042BCBE /* CollectionType+Sweet.swift in Sources */,
 				9F4799191D2BA4550042BCBE /* CollectionTypeTests.swift in Sources */,
 				14A139B41AEFC72B00AD732F /* NSIndexPathTests.swift in Sources */,
-				9FB6A8961D7D57D40093ACED /* DispatchQueue+Sweetness.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,7 +302,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.sample.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
 		};
@@ -320,7 +316,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.sample.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 2.3;
 			};
 			name = Release;
 		};
