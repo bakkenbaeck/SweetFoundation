@@ -18,9 +18,9 @@ public extension IndexPath {
     }
 
     public func comparePosition(to indexPath: IndexPath) -> Direction {
-        if (self as NSIndexPath).section == (indexPath as NSIndexPath).section {
-            return self.comparePosition((self as NSIndexPath).row, otherRow: (indexPath as NSIndexPath).row)
-        } else if (self as NSIndexPath).section < (indexPath as NSIndexPath).section {
+        if self.section == indexPath.section {
+            return self.comparePosition(self.row, otherRow: indexPath.row)
+        } else if self.section < indexPath.section {
             return .before
         } else {
             return .ahead
