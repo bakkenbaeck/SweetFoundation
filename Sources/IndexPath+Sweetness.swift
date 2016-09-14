@@ -1,5 +1,7 @@
 import Foundation
 
+public typealias IndexPath = NSIndexPath
+
 public extension IndexPath {
     public enum Direction {
         case same
