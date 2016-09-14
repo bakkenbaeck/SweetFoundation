@@ -1,5 +1,6 @@
 import Foundation
 
+#if os(iOS) || os(tvOS)
 public extension NSIndexPath {
     public enum Direction {
         case same
@@ -27,3 +28,4 @@ public extension NSIndexPath {
         }
     }
 }
+#endif
