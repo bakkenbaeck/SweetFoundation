@@ -3,10 +3,10 @@ import XCTest
 
 class NSIndexPathTests: XCTestCase {
     func testPositionComparison() {
-        let firstPath = IndexPath(row: 0, section: 0)
-        let secondPath = IndexPath(row: 1, section: 0)
-        let thirdPath = IndexPath(row: 0, section: 1)
-        let fourthPath = IndexPath(row: 1, section: 1)
+        let firstPath = NSIndexPath(row: 0, section: 0)
+        let secondPath = NSIndexPath(row: 1, section: 0)
+        let thirdPath = NSIndexPath(row: 0, section: 1)
+        let fourthPath = NSIndexPath(row: 1, section: 1)
 
         XCTAssert(firstPath.comparePosition(to: firstPath) == .same)
         XCTAssert(firstPath.comparePosition(to: secondPath) == .before)

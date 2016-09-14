@@ -1,8 +1,6 @@
 import Foundation
 
-public typealias IndexPath = NSIndexPath
-
-public extension IndexPath {
+public extension NSIndexPath {
     public enum Direction {
         case same
         case before
@@ -19,7 +17,7 @@ public extension IndexPath {
         }
     }
 
-    public func comparePosition(to indexPath: IndexPath) -> Direction {
+    public func comparePosition(to indexPath: NSIndexPath) -> Direction {
         if self.section == indexPath.section {
             return self.comparePosition(self.row, otherRow: indexPath.row)
         } else if self.section < indexPath.section {
