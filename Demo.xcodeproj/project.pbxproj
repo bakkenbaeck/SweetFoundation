@@ -10,6 +10,8 @@
 		147E2AB71CDB7EBB00BB9AA6 /* IndexPath+Sweetness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147E2AB61CDB7EBB00BB9AA6 /* IndexPath+Sweetness.swift */; };
 		14A139B41AEFC72B00AD732F /* NSIndexPathTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A139B31AEFC72B00AD732F /* NSIndexPathTests.swift */; };
 		14C47E0E1CD2AE5F004A48DF /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 14C47E0D1CD2AE5F004A48DF /* Info.plist */; };
+		9F1D30561D9AADE2006D6343 /* String+Sweetness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1D30551D9AADE2006D6343 /* String+Sweetness.swift */; };
+		9F1D30581D9AAE0E006D6343 /* StringTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1D30571D9AAE0E006D6343 /* StringTest.swift */; };
 		9FB6A8981D7D5DC60093ACED /* DispatchQueue+Sweetness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB6A8971D7D5DC60093ACED /* DispatchQueue+Sweetness.swift */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +40,8 @@
 		14C47E0D1CD2AE5F004A48DF /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		14F393951CC6512400616696 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		14F393961CC6517E00616696 /* LICENSE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
+		9F1D30551D9AADE2006D6343 /* String+Sweetness.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Sweetness.swift"; sourceTree = "<group>"; };
+		9F1D30571D9AAE0E006D6343 /* StringTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringTest.swift; sourceTree = "<group>"; };
 		9FB6A8971D7D5DC60093ACED /* DispatchQueue+Sweetness.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Sweetness.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -85,6 +89,7 @@
 			children = (
 				146D72B01AB782920058798C /* Supporting Files */,
 				14A139B31AEFC72B00AD732F /* NSIndexPathTests.swift */,
+				9F1D30571D9AAE0E006D6343 /* StringTest.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -118,6 +123,7 @@
 			children = (
 				147E2AB61CDB7EBB00BB9AA6 /* IndexPath+Sweetness.swift */,
 				9FB6A8971D7D5DC60093ACED /* DispatchQueue+Sweetness.swift */,
+				9F1D30551D9AADE2006D6343 /* String+Sweetness.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -198,7 +204,9 @@
 			files = (
 				147E2AB71CDB7EBB00BB9AA6 /* IndexPath+Sweetness.swift in Sources */,
 				14A139B41AEFC72B00AD732F /* NSIndexPathTests.swift in Sources */,
+				9F1D30561D9AADE2006D6343 /* String+Sweetness.swift in Sources */,
 				9FB6A8981D7D5DC60093ACED /* DispatchQueue+Sweetness.swift in Sources */,
+				9F1D30581D9AAE0E006D6343 /* StringTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
