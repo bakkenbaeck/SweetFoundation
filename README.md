@@ -20,7 +20,7 @@ pod 'SweetFoundation'
 it, simply add the following line to your Cartfile:
 
 ```ruby
-github "bakkenbaeck/SweetFoundation"
+github "SweetOrg/SweetFoundation"
 ```
 
 ## License
@@ -29,4 +29,4 @@ github "bakkenbaeck/SweetFoundation"
 
 ## Author
 
-Bakken & Bæck, [@bakkenbaeck](https://twitter.com/bakkenbaeck)
+Bakken & Bæck, [@SweetOrg](https://twitter.com/SweetOrg)
