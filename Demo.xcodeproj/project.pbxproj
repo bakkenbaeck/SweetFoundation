@@ -7,11 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		147E2AB71CDB7EBB00BB9AA6 /* IndexPath+Sweetness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147E2AB61CDB7EBB00BB9AA6 /* IndexPath+Sweetness.swift */; };
-		14A139B41AEFC72B00AD732F /* NSIndexPathTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A139B31AEFC72B00AD732F /* NSIndexPathTests.swift */; };
 		14C47E0E1CD2AE5F004A48DF /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 14C47E0D1CD2AE5F004A48DF /* Info.plist */; };
 		9F63ADAE1DA584F600A9FEEF /* SweetFoundation.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F63ADAC1DA584F600A9FEEF /* SweetFoundation.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9F6AEAF31DBE293A0027A254 /* IndexPath+Sweetness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147E2AB61CDB7EBB00BB9AA6 /* IndexPath+Sweetness.swift */; };
 		9F6AEAF41DBE293C0027A254 /* DispatchQueue+Sweetness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB6A8971D7D5DC60093ACED /* DispatchQueue+Sweetness.swift */; };
 		9FB6A8981D7D5DC60093ACED /* DispatchQueue+Sweetness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB6A8971D7D5DC60093ACED /* DispatchQueue+Sweetness.swift */; };
 /* End PBXBuildFile section */
@@ -31,8 +28,6 @@
 /* Begin PBXFileReference section */
 		146D72AC1AB782920058798C /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		146D72B11AB782920058798C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		147E2AB61CDB7EBB00BB9AA6 /* IndexPath+Sweetness.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IndexPath+Sweetness.swift"; sourceTree = "<group>"; };
-		14A139B31AEFC72B00AD732F /* NSIndexPathTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSIndexPathTests.swift; sourceTree = "<group>"; };
 		14C0AF7F1BD6D4230009ECBE /* .slather.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .slather.yml; sourceTree = "<group>"; };
 		14C0AF801BD6D4230009ECBE /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .travis.yml; sourceTree = "<group>"; };
 		14C0AF811BD6D4230009ECBE /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
@@ -99,7 +94,6 @@
 			isa = PBXGroup;
 			children = (
 				146D72B01AB782920058798C /* Supporting Files */,
-				14A139B31AEFC72B00AD732F /* NSIndexPathTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -131,7 +125,6 @@
 		14C31A8C1CD294C70056A33F /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				147E2AB61CDB7EBB00BB9AA6 /* IndexPath+Sweetness.swift */,
 				9FB6A8971D7D5DC60093ACED /* DispatchQueue+Sweetness.swift */,
 			);
 			path = Sources;
@@ -262,8 +255,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				147E2AB71CDB7EBB00BB9AA6 /* IndexPath+Sweetness.swift in Sources */,
-				14A139B41AEFC72B00AD732F /* NSIndexPathTests.swift in Sources */,
 				9FB6A8981D7D5DC60093ACED /* DispatchQueue+Sweetness.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -272,7 +263,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9F6AEAF31DBE293A0027A254 /* IndexPath+Sweetness.swift in Sources */,
 				9F6AEAF41DBE293C0027A254 /* DispatchQueue+Sweetness.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
