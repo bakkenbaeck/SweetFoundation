@@ -18,4 +18,31 @@ class Tests: XCTestCase {
         almostRight = d <= 90.1 && d >= 89.99
         XCTAssert(almostRight)
     }
+
+    func testSerializer() {
+        var dictionary: [String: Any] = ["": ""]
+        var string = OrderedSerializer.string(from: dictionary)
+
+        XCTAssertEqual(string, "{:\"\"}")
+
+        dictionary = ["key": "value"]
+        string = OrderedSerializer.string(from: dictionary)
+
+        XCTAssertEqual(string, "{key:\"value\"}")
+
+        dictionary = ["array": ["element1", "element2"]]
+        string = OrderedSerializer.string(from: dictionary)
+
+        XCTAssertEqual(string, "{array:[\"element1\",\"element2\"]}")
+
+        dictionary = ["dict": ["key1": "value1", "key2": "value2"]]
+        string = OrderedSerializer.string(from: dictionary)
+
+        XCTAssertEqual(string, "{dict:{key1:\"value1\",key2:\"value2\"}}")
+
+        dictionary = ["dictception": ["dict": ["key": "value"]]]
+        string = OrderedSerializer.string(from: dictionary)
+
+        XCTAssertEqual(string, "{dictception:{dict:{key:\"value\"}}}")
+    }
 }

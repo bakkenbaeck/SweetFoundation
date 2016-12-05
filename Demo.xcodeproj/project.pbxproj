@@ -14,6 +14,8 @@
 		9FB915261DC384710071FA78 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB915251DC384710071FA78 /* Math.swift */; };
 		9FB915271DC384710071FA78 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB915251DC384710071FA78 /* Math.swift */; };
 		9FB915291DC384850071FA78 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB915281DC384850071FA78 /* Tests.swift */; };
+		9FD4B7CF1DF5937700569E56 /* Serialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD4B7CE1DF5937700569E56 /* Serialization.swift */; };
+		9FD4B7D01DF5937700569E56 /* Serialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD4B7CE1DF5937700569E56 /* Serialization.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -45,6 +47,7 @@
 		9FB6A8971D7D5DC60093ACED /* DispatchQueue+Sweetness.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Sweetness.swift"; sourceTree = "<group>"; };
 		9FB915251DC384710071FA78 /* Math.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Math.swift; sourceTree = "<group>"; };
 		9FB915281DC384850071FA78 /* Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
+		9FD4B7CE1DF5937700569E56 /* Serialization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Serialization.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +136,7 @@
 			children = (
 				9FB6A8971D7D5DC60093ACED /* DispatchQueue+Sweetness.swift */,
 				9FB915251DC384710071FA78 /* Math.swift */,
+				9FD4B7CE1DF5937700569E56 /* Serialization.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -262,6 +266,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9FD4B7CF1DF5937700569E56 /* Serialization.swift in Sources */,
 				9FB6A8981D7D5DC60093ACED /* DispatchQueue+Sweetness.swift in Sources */,
 				9FB915291DC384850071FA78 /* Tests.swift in Sources */,
 				9FB915261DC384710071FA78 /* Math.swift in Sources */,
@@ -273,6 +278,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9F6AEAF41DBE293C0027A254 /* DispatchQueue+Sweetness.swift in Sources */,
+				9FD4B7D01DF5937700569E56 /* Serialization.swift in Sources */,
 				9FB915271DC384710071FA78 /* Math.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
