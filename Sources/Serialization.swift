@@ -1,7 +1,7 @@
 import Foundation
 
-struct OrderedSerializer {
-    static func string(from leaf: Any) -> String {
+public struct OrderedSerializer {
+    public static func string(from leaf: Any) -> String {
         var string = ""
         if let leaf = leaf as? [String: Any] {
             string.append("{\(self.string(from: leaf))}")
