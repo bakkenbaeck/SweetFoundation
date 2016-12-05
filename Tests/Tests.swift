@@ -44,5 +44,11 @@ class Tests: XCTestCase {
         string = OrderedSerializer.string(from: dictionary)
 
         XCTAssertEqual(string, "{dictception:{dict:{key:\"value\"}}}")
+
+        // Test ordering
+        dictionary = ["b": ["c1": "d1", "c2": "c2"], "a": ["d1": "d1", "a": "value"]]
+        string = OrderedSerializer.string(from: dictionary)
+
+        XCTAssertEqual(string, "{a:{a:\"value\",d1:\"d1\"},b:{c1:\"d1\",c2:\"c2\"}}")
     }
 }

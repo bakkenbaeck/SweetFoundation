@@ -18,7 +18,7 @@ struct OrderedSerializer {
         var string = ""
         let keys: [String] = (leaf.keys.map { k in return k }).sorted { a, b in a < b }
         for (index, key) in keys.enumerated() {
-            guard let value = leaf[key] else { fatalError("WTF?") }
+            guard let value = leaf[key] else { fatalError("Could not retrieve value for leaf.\n\n \(leaf)") }
 
             if let value = value as? [String: Any] {
                 string.append("\(key):{\(self.string(from: value))}")
