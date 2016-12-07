@@ -18,4 +18,12 @@ class Tests: XCTestCase {
         almostRight = d <= 90.1 && d >= 89.99
         XCTAssert(almostRight)
     }
+
+    func testValidEmail() {
+        let validEmail = "marijn@bakkenbaeck.no"
+        let invalidEmail = "invalidEmail.no"
+
+        XCTAssertTrue(validEmail.isValidEmail)
+        XCTAssertFalse(invalidEmail.isValidEmail)
+    }
 }

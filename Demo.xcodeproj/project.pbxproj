@@ -14,6 +14,7 @@
 		9FB915261DC384710071FA78 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB915251DC384710071FA78 /* Math.swift */; };
 		9FB915271DC384710071FA78 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB915251DC384710071FA78 /* Math.swift */; };
 		9FB915291DC384850071FA78 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB915281DC384850071FA78 /* Tests.swift */; };
+		E675A8EF1DF84CE400BE6847 /* String+Sweetness.swift in Sources */ = {isa = PBXBuildFile; fileRef = E675A8EE1DF84CE400BE6847 /* String+Sweetness.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -45,6 +46,7 @@
 		9FB6A8971D7D5DC60093ACED /* DispatchQueue+Sweetness.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Sweetness.swift"; sourceTree = "<group>"; };
 		9FB915251DC384710071FA78 /* Math.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Math.swift; sourceTree = "<group>"; };
 		9FB915281DC384850071FA78 /* Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
+		E675A8EE1DF84CE400BE6847 /* String+Sweetness.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Sweetness.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				9FB6A8971D7D5DC60093ACED /* DispatchQueue+Sweetness.swift */,
+				E675A8EE1DF84CE400BE6847 /* String+Sweetness.swift */,
 				9FB915251DC384710071FA78 /* Math.swift */,
 			);
 			path = Sources;
@@ -262,6 +265,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E675A8EF1DF84CE400BE6847 /* String+Sweetness.swift in Sources */,
 				9FB6A8981D7D5DC60093ACED /* DispatchQueue+Sweetness.swift in Sources */,
 				9FB915291DC384850071FA78 /* Tests.swift in Sources */,
 				9FB915261DC384710071FA78 /* Math.swift in Sources */,
