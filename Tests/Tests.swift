@@ -23,32 +23,32 @@ class Tests: XCTestCase {
         var dictionary: [String: Any] = ["": ""]
         var string = OrderedSerializer.string(from: dictionary)
 
-        XCTAssertEqual(string, "{:\"\"}")
+        XCTAssertEqual(string, "{\"\":\"\"}")
 
         dictionary = ["key": "value"]
         string = OrderedSerializer.string(from: dictionary)
 
-        XCTAssertEqual(string, "{key:\"value\"}")
+        XCTAssertEqual(string, "{\"key\":\"value\"}")
 
         dictionary = ["array": ["element1", "element2"]]
         string = OrderedSerializer.string(from: dictionary)
 
-        XCTAssertEqual(string, "{array:[\"element1\",\"element2\"]}")
+        XCTAssertEqual(string, "{\"array\":[\"element1\",\"element2\"]}")
 
         dictionary = ["dict": ["key1": "value1", "key2": "value2"]]
         string = OrderedSerializer.string(from: dictionary)
 
-        XCTAssertEqual(string, "{dict:{key1:\"value1\",key2:\"value2\"}}")
+        XCTAssertEqual(string, "{\"dict\":{\"key1\":\"value1\",\"key2\":\"value2\"}}")
 
         dictionary = ["dictception": ["dict": ["key": "value"]]]
         string = OrderedSerializer.string(from: dictionary)
 
-        XCTAssertEqual(string, "{dictception:{dict:{key:\"value\"}}}")
+        XCTAssertEqual(string, "{\"dictception\":{\"dict\":{\"key\":\"value\"}}}")
 
         // Test ordering
-        dictionary = ["b": ["c1": "d1", "c2": "c2"], "a": ["d1": "d1", "a": "value"]]
+        dictionary = ["b": [["c1": "d1"], ["c2": "c2"]], "a": ["d1": "d1", "a": "value"]]
         string = OrderedSerializer.string(from: dictionary)
 
-        XCTAssertEqual(string, "{a:{a:\"value\",d1:\"d1\"},b:{c1:\"d1\",c2:\"c2\"}}")
+        XCTAssertEqual(string, "{\"a\":{\"a\":\"value\",\"d1\":\"d1\"},\"b\":[{\"c1\":\"d1\"},{\"c2\":\"c2\"}]}")
     }
 }
