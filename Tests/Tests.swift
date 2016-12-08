@@ -20,10 +20,26 @@ class Tests: XCTestCase {
     }
 
     func testValidEmail() {
-        let validEmail = "marijn@bakkenbaeck.no"
-        let invalidEmail = "invalidEmail.no"
+        let valid1 = "marijn@bakkenbaeck.no"
+        let valid2 = "marijn@bakkenbaeck.amsterdam"
+        let valid3 = "igor+testing@email.com"
+        let valid4 = "テスツ@email.com"
+        let valid5 = "üøçæ_123@email.com"
 
-        XCTAssertTrue(validEmail.isValidEmail)
-        XCTAssertFalse(invalidEmail.isValidEmail)
+        let invalid1 = "invalide@mail.n"
+        let invalid2 = "invalidemail.nl"
+        let invalid3 = "@invalidemail.nl"
+        let invalid4 = "invalid@@email.nl"
+
+        XCTAssertTrue(valid1.isValidEmail)
+        XCTAssertTrue(valid2.isValidEmail)
+        XCTAssertTrue(valid3.isValidEmail)
+        XCTAssertTrue(valid4.isValidEmail)
+        XCTAssertTrue(valid5.isValidEmail)
+
+        XCTAssertFalse(invalid1.isValidEmail)
+        XCTAssertFalse(invalid2.isValidEmail)
+        XCTAssertFalse(invalid3.isValidEmail)
+        XCTAssertFalse(invalid4.isValidEmail)
     }
 }
