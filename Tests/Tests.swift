@@ -35,10 +35,25 @@ class Tests: XCTestCase {
 
         XCTAssertEqual(string, "{\"array\":[\"element1\",\"element2\"]}")
 
+        dictionary = ["array": ["element2", "element1"]]
+        string = OrderedSerializer.string(from: dictionary)
+
+        XCTAssertEqual(string, "{\"array\":[\"element2\",\"element1\"]}")
+
+        dictionary = ["array": ["string", 123]]
+        string = OrderedSerializer.string(from: dictionary)
+
+        XCTAssertEqual(string, "{\"array\":[\"string\",123]}")
+
         dictionary = ["dict": ["key1": "value1", "key2": "value2"]]
         string = OrderedSerializer.string(from: dictionary)
 
         XCTAssertEqual(string, "{\"dict\":{\"key1\":\"value1\",\"key2\":\"value2\"}}")
+
+        dictionary = ["numbers": ["int": Int(12), "float": 2.2]]
+        string = OrderedSerializer.string(from: dictionary)
+
+        XCTAssertEqual(string, "{\"numbers\":{\"float\":2.2,\"int\":12}}")
 
         dictionary = ["dictception": ["dict": ["key": "value"]]]
         string = OrderedSerializer.string(from: dictionary)

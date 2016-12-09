@@ -25,7 +25,13 @@ public struct OrderedSerializer {
             } else if let value = value as? [Any] {
                 string.append("\"\(key)\":[\(self.string(from: value))]")
             } else {
-                string.append("\"\(key)\":\"\(value)\"")
+                if let value = value as? String {
+                    string.append("\"\(key)\":\"\(value)\"")
+                } else if let value = value as? Int {
+                    string.append("\"\(key)\":\(value)")
+                } else if let value = value as? Double {
+                    string.append("\"\(key)\":\(value)")
+                }
             }
 
             if index < (keys.count - 1) {
@@ -44,7 +50,13 @@ public struct OrderedSerializer {
             } else if let element = element as? [Any] {
                 string.append("[\(self.string(from: element))]")
             } else {
-                string.append("\"\(element)\"")
+                if let element = element as? String {
+                    string.append("\"\(element)\"")
+                } else if let element = element as? Int {
+                    string.append("\(element)")
+                } else if let element = element as? Double {
+                    string.append("\(element)")
+                }
             }
 
             if index < (leaf.count - 1) {
