@@ -27,9 +27,11 @@ public struct OrderedSerializer {
             } else {
                 if let value = value as? String {
                     string.append("\"\(key)\":\"\(value)\"")
-                } else if let value = value as? Int {
+                } else if let value = value as? Float {
                     string.append("\"\(key)\":\(value)")
                 } else if let value = value as? Double {
+                    string.append("\"\(key)\":\(value)")
+                } else {
                     string.append("\"\(key)\":\(value)")
                 }
             }
@@ -52,9 +54,11 @@ public struct OrderedSerializer {
             } else {
                 if let element = element as? String {
                     string.append("\"\(element)\"")
-                } else if let element = element as? Int {
+                } else if let element = element as? Float {
                     string.append("\(element)")
                 } else if let element = element as? Double {
+                    string.append("\(element)")
+                } else {
                     string.append("\(element)")
                 }
             }
