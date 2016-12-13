@@ -1,4 +1,5 @@
 import XCTest
+@testable import SweetFoundationMac
 
 class Tests: XCTestCase {
     func testMath() {
