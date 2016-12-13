@@ -24,6 +24,16 @@ We include a simple JSON to String serialiser that guarantees the order of dicti
 ```swift
 let hashableString = OrderedSerializer.string(from: jsonPayload)
 ```
+### Base64 with or without padding
+Sometimes you need to deal with base64 strings without the padding.
+
+```swift
+// Generate base64 string without padding from a Data structure.
+let noPadding = "This is a test string".data(using: .utf8)!.base64EncodedStringWithoutPadding()
+
+// sometimes you want the padding back.
+noPadding.paddedForBase64
+```
 
 ## Installation
 
