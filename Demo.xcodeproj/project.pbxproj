@@ -13,6 +13,10 @@
 		9F2018DB1DFFF1CD000FF81F /* DispatchQueue+Sweetness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB6A8971D7D5DC60093ACED /* DispatchQueue+Sweetness.swift */; };
 		9F2018DC1DFFF1CD000FF81F /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB915251DC384710071FA78 /* Math.swift */; };
 		9F2018DD1DFFF1CD000FF81F /* Serialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD4B7CE1DF5937700569E56 /* Serialization.swift */; };
+		9F2018DF1DFFF2D7000FF81F /* Data+Sweetness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2018DE1DFFF2D7000FF81F /* Data+Sweetness.swift */; };
+		9F2018E01DFFF2D7000FF81F /* Data+Sweetness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2018DE1DFFF2D7000FF81F /* Data+Sweetness.swift */; };
+		9F2018E21DFFF2EA000FF81F /* String+Sweetness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2018E11DFFF2EA000FF81F /* String+Sweetness.swift */; };
+		9F2018E31DFFF2EA000FF81F /* String+Sweetness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2018E11DFFF2EA000FF81F /* String+Sweetness.swift */; };
 		9F63ADAE1DA584F600A9FEEF /* SweetFoundation.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F63ADAC1DA584F600A9FEEF /* SweetFoundation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9F6AEAF41DBE293C0027A254 /* DispatchQueue+Sweetness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB6A8971D7D5DC60093ACED /* DispatchQueue+Sweetness.swift */; };
 		9FB915271DC384710071FA78 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB915251DC384710071FA78 /* Math.swift */; };
@@ -43,6 +47,8 @@
 		9F2018C51DFFF14E000FF81F /* SweetFoundationMac.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SweetFoundationMac.h; sourceTree = "<group>"; };
 		9F2018C61DFFF14E000FF81F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9F2018CB1DFFF14E000FF81F /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9F2018DE1DFFF2D7000FF81F /* Data+Sweetness.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+Sweetness.swift"; sourceTree = "<group>"; };
+		9F2018E11DFFF2EA000FF81F /* String+Sweetness.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Sweetness.swift"; sourceTree = "<group>"; };
 		9F63ADAA1DA584F600A9FEEF /* SweetFoundation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SweetFoundation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F63ADAC1DA584F600A9FEEF /* SweetFoundation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SweetFoundation.h; sourceTree = "<group>"; };
 		9F63ADAD1DA584F600A9FEEF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -149,6 +155,8 @@
 				9FB6A8971D7D5DC60093ACED /* DispatchQueue+Sweetness.swift */,
 				9FB915251DC384710071FA78 /* Math.swift */,
 				9FD4B7CE1DF5937700569E56 /* Serialization.swift */,
+				9F2018DE1DFFF2D7000FF81F /* Data+Sweetness.swift */,
+				9F2018E11DFFF2EA000FF81F /* String+Sweetness.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -325,8 +333,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				9F2018DB1DFFF1CD000FF81F /* DispatchQueue+Sweetness.swift in Sources */,
+				9F2018E01DFFF2D7000FF81F /* Data+Sweetness.swift in Sources */,
 				9F2018DD1DFFF1CD000FF81F /* Serialization.swift in Sources */,
 				9F2018DC1DFFF1CD000FF81F /* Math.swift in Sources */,
+				9F2018E31DFFF2EA000FF81F /* String+Sweetness.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -343,8 +353,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				9F6AEAF41DBE293C0027A254 /* DispatchQueue+Sweetness.swift in Sources */,
+				9F2018DF1DFFF2D7000FF81F /* Data+Sweetness.swift in Sources */,
 				9FD4B7D01DF5937700569E56 /* Serialization.swift in Sources */,
 				9FB915271DC384710071FA78 /* Math.swift in Sources */,
+				9F2018E21DFFF2EA000FF81F /* String+Sweetness.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -632,6 +644,7 @@
 				9F2018D51DFFF14E000FF81F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9F2018D91DFFF14E000FF81F /* Build configuration list for PBXNativeTarget "Tests" */ = {
 			isa = XCConfigurationList;
@@ -640,6 +653,7 @@
 				9F2018D71DFFF14E000FF81F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9F63ADB11DA584F600A9FEEF /* Build configuration list for PBXNativeTarget "SweetFoundation" */ = {
 			isa = XCConfigurationList;

@@ -20,6 +20,32 @@ class Tests: XCTestCase {
         XCTAssert(almostRight)
     }
 
+    func testBase64() {
+        var string = "This is a test string"
+        var string64 = string.data(using: .utf8)!.base64EncodedString()
+        var string64NoPadding = string.data(using: .utf8)!.base64EncodedStringWithoutPadding()
+
+        XCTAssertEqual(string64, "VGhpcyBpcyBhIHRlc3Qgc3RyaW5n")
+        XCTAssertEqual(string64NoPadding, "VGhpcyBpcyBhIHRlc3Qgc3RyaW5n")
+        XCTAssertEqual(string64NoPadding.paddedForBase64, "VGhpcyBpcyBhIHRlc3Qgc3RyaW5n")
+
+        string = "This is a test string without padding"
+        string64 = string.data(using: .utf8)!.base64EncodedString()
+        string64NoPadding = string.data(using: .utf8)!.base64EncodedStringWithoutPadding()
+
+        XCTAssertEqual(string64, "VGhpcyBpcyBhIHRlc3Qgc3RyaW5nIHdpdGhvdXQgcGFkZGluZw==")
+        XCTAssertEqual(string64NoPadding, "VGhpcyBpcyBhIHRlc3Qgc3RyaW5nIHdpdGhvdXQgcGFkZGluZw")
+        XCTAssertEqual(string64NoPadding.paddedForBase64, "VGhpcyBpcyBhIHRlc3Qgc3RyaW5nIHdpdGhvdXQgcGFkZGluZw==")
+
+        string = "One-pad string"
+        string64 = string.data(using: .utf8)!.base64EncodedString()
+        string64NoPadding = string.data(using: .utf8)!.base64EncodedStringWithoutPadding()
+
+        XCTAssertEqual(string64, "T25lLXBhZCBzdHJpbmc=")
+        XCTAssertEqual(string64NoPadding, "T25lLXBhZCBzdHJpbmc")
+        XCTAssertEqual(string64NoPadding.paddedForBase64, "T25lLXBhZCBzdHJpbmc=")
+    }
+
     func testSerializer() {
         var dictionary: [String: Any] = ["": ""]
         var string = OrderedSerializer.string(from: dictionary)
