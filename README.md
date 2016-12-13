@@ -5,7 +5,25 @@
 [![Platform](https://img.shields.io/cocoapods/p/SweetFoundation.svg?style=flat)](https://cocoapods.org/pods/SweetFoundation)
 
 ## Usage
+### Math helpers
+Simple helpers to convert degrees to radians and vice-versa.
 
+```swift
+Math.degreesToRadians()
+Math.radiansToDegrees()
+```
+### DispatchQueue helpers
+Dispatch async after using seconds (`Double`), instead of dealing with `DispatchTime`.
+
+```swift
+DispatchQueue.asyncAfter(seconds: 1.5) { }
+```
+### Serialisation
+We include a simple JSON to String serialiser that guarantees the order of dictionary keys to be alphabetical. This is essential when signing or hashing payloads.
+
+```swift
+let hashableString = OrderedSerializer.string(from: jsonPayload)
+```
 
 ## Installation
 
