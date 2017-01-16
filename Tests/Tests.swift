@@ -2,6 +2,16 @@ import XCTest
 @testable import SweetFoundationMac
 
 class Tests: XCTestCase {
+
+    // Not sure how to test that the type is correctly inferred.
+    // This pretty much just ensures that the property is accessible and non-nil for a non-empty array.
+    func testArrayAny() {
+        let array: Array = ["Some", "Value", "Random"]
+        let value = array.any
+
+        XCTAssertNotNil(value)
+    }
+
     func testMath() {
         var d = Math.degreesToRadians(45)
         var almostRight = d <= 0.786 && d >= 0.785
