@@ -9,7 +9,7 @@ class Tests: XCTestCase {
         let array: Array = ["Some", "Value", "Random"]
         let value = array.any
 
-        XCTAssert(value != nil)
+        XCTAssertNotNil(value)
     }
 
     func testMath() {
