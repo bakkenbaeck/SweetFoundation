@@ -1,6 +1,6 @@
 import Foundation
 
-extension Data {
+public extension Data {
     public func base64EncodedStringWithoutPadding() -> String {
         let base64 = self.base64EncodedString()
         if base64.hasSuffix("==") {
