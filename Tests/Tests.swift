@@ -114,4 +114,23 @@ class Tests: XCTestCase {
 
         XCTAssertEqual(array.element(at: 3), nil)
     }
+
+    func testUrlRequestDebugDescription() {
+        let url = URL(string: "https://SOMEbackend.testwerk.org/api/test/request")!
+
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+
+        let parameters: [String: Any] = [
+                "parameter1": "value",
+                "parameter2": 2
+        ]
+
+        request.httpBody = try! JSONSerialization.data(withJSONObject: parameters, options: [])
+        
+        let debugDescription = request.debugDescription
+        
+        XCTAssertEqual(debugDescription, "somethigngnngng")
+    }
 }
