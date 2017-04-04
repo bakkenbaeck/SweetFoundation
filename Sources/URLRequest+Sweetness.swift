@@ -1,7 +1,7 @@
 import Foundation
 
 extension URLRequest {
-    public var debugDescription: String {
+    public func debugLog() -> String {
         var description = "\(self)"
         if let headers = self.allHTTPHeaderFields {
             description.append("\n\(headers)")

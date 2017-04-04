@@ -76,8 +76,8 @@ class Tests: XCTestCase {
 
         request.httpBody = try! JSONSerialization.data(withJSONObject: parameters, options: [])
         
-        let debugDescription = request.debugDescription
+        let description = request.debugLog()
         
-        XCTAssertEqual(debugDescription, "somethigngnngng")
+        XCTAssertEqual(description, "https://SOMEbackend.testwerk.org/api/test/request\n[\"Content-Type\": \"application/json\"]\n{\"parameter1\":\"value\",\"parameter2\":2}")
     }
 }
