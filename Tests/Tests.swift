@@ -56,6 +56,13 @@ class Tests: XCTestCase {
         XCTAssertEqual(string64NoPadding.paddedForBase64, "T25lLXBhZCBzdHJpbmc=")
     }
 
+    func testHexString() {
+        let someData = "This is a test string".data(using: .utf8)
+        let hexString = someData!.hexadecimalString()
+
+        XCTAssertEqual(hexString, "546869732069732061207465737420737472696e67")
+    }
+
     func testSafeAccess() {
         let array = [1, 2, 3]
 

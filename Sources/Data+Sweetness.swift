@@ -11,4 +11,13 @@ public extension Data {
 
         return base64
     }
+
+    public func hexadecimalString() -> String {
+        var hexString = ""
+        for byte in [UInt8](self) {
+            hexString += String(format: "%02lx", byte)
+        }
+
+        return hexString
+    }
 }
