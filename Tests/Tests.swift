@@ -61,4 +61,22 @@ class Tests: XCTestCase {
 
         XCTAssertEqual(array.element(at: 3), nil)
     }
+
+    func testUrlRequestDebugDescription() {
+        let url = URL(string: "https://simple.org")!
+
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+
+        let parameters: [String: Any] = [
+                "parameter1": "value"
+        ]
+
+        request.httpBody = try! JSONSerialization.data(withJSONObject: parameters, options: [])
+        
+        let description = request.debugLog()
+        
+        XCTAssertEqual(description, "https://simple.org\n[\"Content-Type\": \"application/json\"]\n{\"parameter1\":\"value\"}")
+    }
 }
