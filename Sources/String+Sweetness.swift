@@ -2,7 +2,7 @@ import Foundation
 
 public extension String {
     public var paddedForBase64: String {
-        let length = self.decomposedStringWithCanonicalMapping.characters.count
+        let length = self.decomposedStringWithCanonicalMapping.count
         let paddingString = "="
         let paddingLength = length % 4
 
