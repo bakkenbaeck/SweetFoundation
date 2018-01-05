@@ -1,7 +1,7 @@
 import Foundation
 
-public extension Collection where Indices.Iterator.Element == Index {
-    public func element(at index: Index) -> Generator.Element? {
+public extension Collection {
+    public func element(at index: Index) -> Iterator.Element? {
         return indices.contains(index) ? self[index] : nil
     }
 }
