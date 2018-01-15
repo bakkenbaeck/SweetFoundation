@@ -24,6 +24,19 @@ We include a simple JSON to String serialiser that guarantees the order of dicti
 ```swift
 let hashableString = OrderedSerializer.string(from: jsonPayload)
 ```
+
+### String range conversion.
+To avoid having to do constant casts to `String` or `NSString` to get the range type you need, we've added two simple methods to convert between them:g
+
+```swift
+// from Range<String.Index> to NSRange
+let range = string.range(of: "substring")
+let nsRange = range.nsRange(on: string)
+
+// from NSRange to Range<String.Index>
+let range = nsRange.range(on: string as NSString)
+```
+
 ### Base64 with or without padding
 Sometimes you need to deal with base64 strings without the padding.
 
