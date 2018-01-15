@@ -10,8 +10,9 @@ public extension Range where Bound: _StringIndex {
     /// - Parameter string: string where ranges will be applied. Necessary to ensure that multi-byte code-points are treated properly.
     /// - Returns: the NSRange representation of a Range<String.Index> for the given string.
     public func nsRange(on string: String) -> NSRange {
-        let lowerBound = self.lowerBound as! String.Index
-        let upperBound = self.upperBound as! String.Index
+        guard let lowerBound = self.lowerBound as? String.Index, let upperBound = self.upperBound as? String.Index else {
+            fatalError("Could not cast range bounds as String.Index.")
+        }
 
         // always use utf16, as it's the internal representation of NSStrings, to ensure that clusters are counted correctly
         let location = string.utf16.distance(from: string.utf16.startIndex, to: lowerBound)
