@@ -28,6 +28,12 @@ public extension NSRange {
 
         return (string as String).range(of: substring)
     }
+
+    public func range(on string: String) -> Range<String.Index>? {
+        guard let substring = string.substring(with: self) else { fatalError("Range out of bounds for string.") }
+
+        return (string).range(of: substring)
+    }
 }
 
 public extension String {
@@ -43,5 +49,15 @@ public extension String {
         } else {
             return self
         }
+    }
+
+    public func substring(with range: NSRange) -> Substring? {
+        guard let r = range.range(on: self as NSString) else { return nil }
+
+        return self[r]
+    }
+
+    public func nsRange(of string: String) -> NSRange {
+        return (self as NSString).range(of: string)
     }
 }

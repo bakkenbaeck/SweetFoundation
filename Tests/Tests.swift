@@ -194,4 +194,22 @@ class Tests: XCTestCase {
 
         XCTAssertEqual(substring, expected)
     }
+
+    func testRangesFromString() {
+        let string = "This is a *test* string. 🧐 👩‍👩‍👧 Added some emoji clusters *here*."
+        let nsRange = string.nsRange(of: "*here*")
+        let range = string.range(of: "*here*")!
+
+        XCTAssertEqual(range.nsRange(on: string), nsRange)
+        XCTAssertEqual(nsRange.range(on: string as NSString), range)
+    }
+
+    func testNSRangeSubstring() {
+        let string = "This is a *test* string. 🧐 👩‍👩‍👧 Added some emoji clusters *here*."
+        let range = NSRange(location: 63, length: 6)
+
+        let substring = string.substring(with: range)
+
+        XCTAssertEqual(substring, "*here*")
+    }
 }
