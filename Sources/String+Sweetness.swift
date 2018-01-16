@@ -51,10 +51,10 @@ public extension String {
         }
     }
 
-    public func substring(with range: NSRange) -> Substring? {
-        guard let r = range.range(on: self as NSString) else { return nil }
+    public func substring(with nsRange: NSRange) -> Substring? {
+        guard let range = nsRange.range(on: self as NSString) else { return nil }
 
-        return self[r]
+        return self[range]
     }
 
     public func nsRange(of string: String) -> NSRange {
