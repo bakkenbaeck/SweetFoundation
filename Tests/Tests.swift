@@ -1,5 +1,5 @@
-import XCTest
 @testable import SweetFoundation
+import XCTest
 
 class Tests: XCTestCase {
 
@@ -77,13 +77,142 @@ class Tests: XCTestCase {
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
 
         let parameters: [String: Any] = [
-                "parameter1": "value"
+            "parameter1": "value"
         ]
 
         request.httpBody = try! JSONSerialization.data(withJSONObject: parameters, options: [])
-        
+
         let description = request.debugLog()
-        
+
         XCTAssertEqual(description, "https://simple.org\n[\"Content-Type\": \"application/json\"]\n{\"parameter1\":\"value\"}")
+    }
+
+    func testStringRangeConversionBeforeEmojiCluster() {
+        let string = "This is a *test* string. 🧐 👩‍👩‍👧 Added some emoji clusters *here*."
+        let expected = "*test*"
+
+        let range = string.range(of: expected)!
+        let nsRange = range.nsRange(on: string)
+
+        let substring = (string as NSString).substring(with: nsRange)
+
+        XCTAssertEqual(substring, expected)
+    }
+
+    func testStringRangeConversionAfterEmojiCluster() {
+        let string = "This is a *test* string. 🧐 👩‍👩‍👧 Added some emoji clusters *here*."
+        let expected = "*here*"
+
+        let range = string.range(of: expected)!
+        let nsRange = range.nsRange(on: string)
+
+        let substring = (string as NSString).substring(with: nsRange)
+
+        XCTAssertEqual(substring, expected)
+    }
+
+    func testStringRangeConversionsIncludesNonClusterEmoji() {
+        let string = "🤔 This is a *test* string."
+        let expected = "*test*"
+
+        let range = string.range(of: expected)!
+        let nsRange = range.nsRange(on: string)
+
+        let substring = (string as NSString).substring(with: nsRange)
+
+        XCTAssertEqual(substring, expected)
+    }
+
+    func testStringRangeConversionsPlainString() {
+        let string = "This is a *test* string."
+        let expected = "*test*"
+
+        let range = string.range(of: expected)!
+        let nsRange = range.nsRange(on: string)
+
+        let substring = (string as NSString).substring(with: nsRange)
+
+        XCTAssertEqual(substring, expected)
+    }
+
+    func testStringNSRangeConversionBeforeEmojiCluster() {
+        let string = NSString(string: "This is a *test* string. 🧐 👩‍👩‍👧 Added some emoji clusters *here*.")
+        let expected = "*test*"
+
+        let nsRange = string.range(of: expected)
+        guard let range = nsRange.range(on: string) else {
+            XCTFail("Could not get range of substring.")
+            return
+        }
+
+        let substring = String((string as String)[range])
+
+        XCTAssertEqual(substring, expected)
+    }
+
+    func testStringNSRangeConversionAfterEmojiCluster() {
+        let string = NSString(string: "This is a *test* string. 🧐 👩‍👩‍👧 Added some emoji clusters *here*.")
+        let expected = "*here*"
+
+        let nsRange = string.range(of: expected)
+        guard let range = nsRange.range(on: string) else {
+            XCTFail("Could not get range of substring.")
+            return
+        }
+
+        let substring = String((string as String)[range])
+
+        XCTAssertEqual(substring, expected)
+    }
+
+    func testStringNSRangeConversionsIncludesNonClusterEmoji() {
+        let string = NSString(string: "🤔 This is a *test* string.")
+        let expected = "*test*"
+
+        let nsRange = string.range(of: expected)
+        guard let range = nsRange.range(on: string) else {
+            XCTFail("Could not get range of substring.")
+            return
+        }
+
+        let substring = String((string as String)[range])
+
+        XCTAssertEqual(substring, expected)
+    }
+
+    func testStringNSRangeConversionsPlainString() {
+        let string = NSString(string: "This is a *test* string.")
+        let expected = "*test*"
+
+        let nsRange = string.range(of: expected)
+        guard let range = nsRange.range(on: string) else {
+            XCTFail("Could not get range of substring.")
+            return
+        }
+
+        let substring = String((string as String)[range])
+
+        XCTAssertEqual(substring, expected)
+    }
+
+    func testRangesFromString() {
+        let string = "This is a *test* string. 🧐 👩‍👩‍👧 Added some emoji clusters *here*."
+        let nsRange = string.nsRange(of: "*here*")
+        guard let range = string.range(of: "*here*") else {
+            XCTFail("Could not get range of substring.")
+            return
+        }
+
+        XCTAssertEqual(range.nsRange(on: string), nsRange)
+        XCTAssertEqual(nsRange.range(on: string as NSString), range)
+    }
+
+    func testNSRangeSubstring() {
+        let string = "This is a *test* string. 🧐 👩‍👩‍👧 Added some emoji clusters *here*."
+        let range = NSRange(location: 63, length: 6)
+
+        let substring = string.substring(with: range)
+
+        XCTAssertEqual(substring, "*here*")
     }
 }
