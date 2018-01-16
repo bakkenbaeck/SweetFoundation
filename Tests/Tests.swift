@@ -141,7 +141,7 @@ class Tests: XCTestCase {
 
         let nsRange = string.range(of: expected)
         guard let range = nsRange.range(on: string) else {
-            XCTAssertFalse(true)
+            XCTAssertTrue(false, "Could not get range of substring.")
             return
         }
 
@@ -156,7 +156,7 @@ class Tests: XCTestCase {
 
         let nsRange = string.range(of: expected)
         guard let range = nsRange.range(on: string) else {
-            XCTAssertFalse(true)
+            XCTAssertTrue(false, "Could not get range of substring.")
             return
         }
 
@@ -171,7 +171,7 @@ class Tests: XCTestCase {
 
         let nsRange = string.range(of: expected)
         guard let range = nsRange.range(on: string) else {
-            XCTAssertFalse(true)
+            XCTAssertTrue(false, "Could not get range of substring.")
             return
         }
 
@@ -186,7 +186,7 @@ class Tests: XCTestCase {
 
         let nsRange = string.range(of: expected)
         guard let range = nsRange.range(on: string) else {
-            XCTAssertFalse(true)
+            XCTAssertTrue(false, "Could not get range of substring.")
             return
         }
 
@@ -198,7 +198,10 @@ class Tests: XCTestCase {
     func testRangesFromString() {
         let string = "This is a *test* string. 🧐 👩‍👩‍👧 Added some emoji clusters *here*."
         let nsRange = string.nsRange(of: "*here*")
-        let range = string.range(of: "*here*")!
+        guard let range = string.range(of: "*here*") else {
+            XCTAssertTrue(false, "Could not get range of substring.")
+            return
+        }
 
         XCTAssertEqual(range.nsRange(on: string), nsRange)
         XCTAssertEqual(nsRange.range(on: string as NSString), range)
