@@ -26,7 +26,7 @@ let hashableString = OrderedSerializer.string(from: jsonPayload)
 ```
 
 ### String range conversion.
-To avoid having to do constant casts to `String` or `NSString` to get the range type you need, we've added two simple methods to convert between them:g
+To avoid having to do constant casts to `String` or `NSString` to get the range type you need, we've added two simple methods to convert between them:
 
 ```swift
 // from Range<String.Index> to NSRange
