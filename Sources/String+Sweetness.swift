@@ -37,6 +37,10 @@ public extension NSRange {
 }
 
 public extension String {
+    public var wholeRange: Range<String.Index> {
+        return self.range(of: self)!
+    }
+
     public var paddedForBase64: String {
         let length = self.decomposedStringWithCanonicalMapping.count
         let paddingString = "="
