@@ -25,8 +25,15 @@ We include a simple JSON to String serialiser that guarantees the order of dicti
 let hashableString = OrderedSerializer.string(from: jsonPayload)
 ```
 
-### String range conversion.
-To avoid having to do constant casts to `String` or `NSString` to get the range type you need, we've added two simple methods to convert between them:
+### String range helpers
+
+We've added a computed property to request the whole range of a string:
+
+```swift
+let range = "This is a test string".wholeRange
+```
+
+Also to avoid having to do constant casts to `String` or `NSString` to get the range type you need, we've added two simple methods to convert between them:
 
 ```swift
 // from Range<String.Index> to NSRange
