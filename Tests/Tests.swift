@@ -215,4 +215,15 @@ class Tests: XCTestCase {
 
         XCTAssertEqual(substring, "*here*")
     }
+
+    func testWholeRange() {
+        let clusterString = "This is a test string. 🧐 👩‍👩‍👧 Added some emoji clusters here."
+        let simpleString = "This is a test string."
+
+        XCTAssertEqual(clusterString.wholeRange.lowerBound, clusterString.startIndex)
+        XCTAssertEqual(clusterString.wholeRange.upperBound, clusterString.endIndex)
+
+        XCTAssertEqual(simpleString.wholeRange.lowerBound, simpleString.startIndex)
+        XCTAssertEqual(simpleString.wholeRange.upperBound, simpleString.endIndex)
+    }
 }
