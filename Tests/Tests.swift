@@ -217,8 +217,14 @@ class Tests: XCTestCase {
     }
 
     func testWholeRange() {
+        let emptyString = ""
         let clusterString = "This is a test string. 🧐 👩‍👩‍👧 Added some emoji clusters here."
         let simpleString = "This is a test string."
+
+
+        XCTAssertEqual(emptyString.wholeRange.lowerBound, emptyString.startIndex)
+        XCTAssertEqual(emptyString.wholeRange.upperBound, emptyString.endIndex)
+        XCTAssertEqual(emptyString.wholeRange.lowerBound, emptyString.wholeRange.upperBound)
 
         XCTAssertEqual(clusterString.wholeRange.lowerBound, clusterString.startIndex)
         XCTAssertEqual(clusterString.wholeRange.upperBound, clusterString.endIndex)
