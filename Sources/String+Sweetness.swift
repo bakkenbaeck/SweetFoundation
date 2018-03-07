@@ -37,6 +37,12 @@ public extension NSRange {
 }
 
 public extension String {
+    public var wholeRange: Range<String.Index> {
+        // If string is empty, self.range(of:) is nil.
+        // So we return a {0,0} range instead.
+        return self.range(of: self) ?? Range<String.Index>(NSRange(location: 0, length: 0), in: self)!
+    }
+
     public var paddedForBase64: String {
         let length = self.decomposedStringWithCanonicalMapping.count
         let paddingString = "="
