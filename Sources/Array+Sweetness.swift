@@ -1,7 +1,9 @@
 import Foundation
 
 public extension Array {
+
+    @available(swift, deprecated: 4.2, message: "Use the standard library's `.randomElement()` method instead.")
     public var any: Element? {
-        return self[Int(arc4random_uniform(UInt32(self.count)))] as Element
+        return self.randomElement()
     }
 }
