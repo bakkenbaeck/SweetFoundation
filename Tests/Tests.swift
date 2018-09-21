@@ -13,21 +13,17 @@ class Tests: XCTestCase {
     }
 
     func testMath() {
-        var d = Math.degreesToRadians(45)
-        var almostRight = d <= 0.786 && d >= 0.785
-        XCTAssert(almostRight)
+        let radians = Math.degreesToRadians(45)
+        XCTAssertEqual(radians, 0.785, accuracy: 0.001)
 
-        d = Math.degreesToRadians(65)
-        almostRight = d <= 1.135 && d >= 1.134
-        XCTAssert(almostRight)
+        let radians2 = Math.degreesToRadians(65)
+        XCTAssertEqual(radians2, 1.134, accuracy: 0.001)
 
-        d = Math.radiansToDegrees(Double.pi)
-        almostRight = d <= 180.1 && d >= 179.99
-        XCTAssert(almostRight)
+        let degrees = Math.radiansToDegrees(Double.pi)
+        XCTAssertEqual(degrees, 180.0, accuracy: 0.001)
 
-        d = Math.radiansToDegrees(Double.pi / 2)
-        almostRight = d <= 90.1 && d >= 89.99
-        XCTAssert(almostRight)
+        let degrees2 = Math.radiansToDegrees(Double.pi / 2)
+        XCTAssertEqual(degrees2, 90.0, accuracy: 0.001)
     }
 
     func testBase64() {
