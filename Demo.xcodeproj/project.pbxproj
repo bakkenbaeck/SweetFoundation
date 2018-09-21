@@ -24,7 +24,6 @@
 		9FBF304E1E2CFD6900BA755D /* Array+Sweetness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBF304D1E2CFD6900BA755D /* Array+Sweetness.swift */; };
 		9FBF304F1E2CFDB300BA755D /* Array+Sweetness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBF304D1E2CFD6900BA755D /* Array+Sweetness.swift */; };
 		D197B25DDCC5DCBF1F565D8D /* URLRequest+Sweetness.swift in Sources */ = {isa = PBXBuildFile; fileRef = D197B9193F8E0BC299E4BEA9 /* URLRequest+Sweetness.swift */; };
-		D197B6DF4F3E1B8838CFEA38 /* URLRequest+Sweetness.swift in Sources */ = {isa = PBXBuildFile; fileRef = D197B9193F8E0BC299E4BEA9 /* URLRequest+Sweetness.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,16 +38,15 @@
 
 /* Begin PBXFileReference section */
 		14C0AF7F1BD6D4230009ECBE /* .slather.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .slather.yml; sourceTree = "<group>"; };
-		14C0AF801BD6D4230009ECBE /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .travis.yml; sourceTree = "<group>"; };
 		14C0AF811BD6D4230009ECBE /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
 		14C0AF821BD6D4230009ECBE /* CONTRIBUTING.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CONTRIBUTING.md; sourceTree = "<group>"; };
 		14C0AF831BD6D4230009ECBE /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		14C47E0D1CD2AE5F004A48DF /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		14E527AD1E9294F3009B22FD /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		14E527AF1E9294F3009B22FD /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		14E527B11E9294F3009B22FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		14F393951CC6512400616696 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		14F393961CC6517E00616696 /* LICENSE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
+		3376A2D7215516ED00320284 /* SweetFoundation.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = SweetFoundation.podspec; sourceTree = "<group>"; };
 		9F2018C31DFFF14E000FF81F /* SweetFoundationMac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SweetFoundationMac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F2018C51DFFF14E000FF81F /* SweetFoundationMac.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SweetFoundationMac.h; sourceTree = "<group>"; };
 		9F2018C61DFFF14E000FF81F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -125,9 +123,8 @@
 		14C136501AB7849300B7B07A /* Metadata */ = {
 			isa = PBXGroup;
 			children = (
-				14C47E0D1CD2AE5F004A48DF /* Info.plist */,
 				14C0AF7F1BD6D4230009ECBE /* .slather.yml */,
-				14C0AF801BD6D4230009ECBE /* .travis.yml */,
+				3376A2D7215516ED00320284 /* SweetFoundation.podspec */,
 				14C0AF811BD6D4230009ECBE /* CHANGELOG.md */,
 				14C0AF821BD6D4230009ECBE /* CONTRIBUTING.md */,
 				14F393961CC6517E00616696 /* LICENSE.md */,
