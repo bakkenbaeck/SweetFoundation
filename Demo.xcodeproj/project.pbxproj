@@ -11,6 +11,7 @@
 		14E527B21E9294F3009B22FD /* SweetFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F63ADAA1DA584F600A9FEEF /* SweetFoundation.framework */; };
 		9B177B4C21A83B67002DCA66 /* NSPredicate+Sweetness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B177B4B21A83B67002DCA66 /* NSPredicate+Sweetness.swift */; };
 		9B177B5A21A87686002DCA66 /* NSManagedObject+Sweetness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B177B5721A875EA002DCA66 /* NSManagedObject+Sweetness.swift */; };
+		9B177B5C21A87859002DCA66 /* TestDateFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B177B5B21A87859002DCA66 /* TestDateFactory.swift */; };
 		9B177B5F21A895C7002DCA66 /* NSManagedObject+Sweetness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B177B5721A875EA002DCA66 /* NSManagedObject+Sweetness.swift */; };
 		9B177B6021A895CA002DCA66 /* NSPredicate+Sweetness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B177B4B21A83B67002DCA66 /* NSPredicate+Sweetness.swift */; };
 		9B177B6121A895CE002DCA66 /* NSManagedObjectContext+Sweetness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B177B5D21A886A1002DCA66 /* NSManagedObjectContext+Sweetness.swift */; };
@@ -54,6 +55,7 @@
 		3376A2D821551BEE00320284 /* config.yml */ = {isa = PBXFileReference; lastKnownFileType = text; name = config.yml; path = .circleci/config.yml; sourceTree = "<group>"; };
 		9B177B4B21A83B67002DCA66 /* NSPredicate+Sweetness.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSPredicate+Sweetness.swift"; sourceTree = "<group>"; };
 		9B177B5721A875EA002DCA66 /* NSManagedObject+Sweetness.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+Sweetness.swift"; sourceTree = "<group>"; };
+		9B177B5B21A87859002DCA66 /* TestDateFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDateFactory.swift; sourceTree = "<group>"; };
 		9B177B5D21A886A1002DCA66 /* NSManagedObjectContext+Sweetness.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Sweetness.swift"; sourceTree = "<group>"; };
 		9F2018C31DFFF14E000FF81F /* SweetFoundationMac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SweetFoundationMac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F2018C51DFFF14E000FF81F /* SweetFoundationMac.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SweetFoundationMac.h; sourceTree = "<group>"; };
@@ -161,10 +163,19 @@
 		14E527AE1E9294F3009B22FD /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				9B177B4F21A85D0A002DCA66 /* SampleData */,
 				14E527AF1E9294F3009B22FD /* Tests.swift */,
 				14E527B11E9294F3009B22FD /* Info.plist */,
 			);
 			path = Tests;
+			sourceTree = "<group>";
+		};
+		9B177B4F21A85D0A002DCA66 /* SampleData */ = {
+			isa = PBXGroup;
+			children = (
+				9B177B5B21A87859002DCA66 /* TestDateFactory.swift */,
+			);
+			path = SampleData;
 			sourceTree = "<group>";
 		};
 		9F2018C41DFFF14E000FF81F /* SweetFoundationMac */ = {
@@ -341,6 +352,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B177B5C21A87859002DCA66 /* TestDateFactory.swift in Sources */,
 				14E527B01E9294F3009B22FD /* Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
