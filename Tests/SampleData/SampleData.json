@@ -1,0 +1,124 @@
+[
+  {
+    "name": "Bakken & Bæck",
+    "founded": "1-1-2008",
+    "offices": [
+      {
+        "name": "HQ",
+        "lat": 59.9139,
+        "lng": 10.7522,
+        "open": true,
+        "employees": [
+          {
+            "name": "Johan",
+            "age": 99,
+            "email": "bakken@bakkenbaeck.no"
+          },
+          {
+            "name": "Tobias",
+            "age": 12,
+            "email": "tobias@seemslegit.biz"
+          },
+          {
+            "name": "Ole Martin",
+            "age": 36,
+            "email": "olemartin@internet.no"
+          },
+          {
+            "name": "Yuliia",
+            "age": 24,
+            "email": "yulia@notrussia.ua"
+          }
+        ]
+      },
+      {
+        "name": "Bonn",
+        "lat": 50.7374,
+        "lng": 7.0982,
+        "open": true,
+        "employees":  [
+            {
+                "name": "Tristan",
+                "age": 28,
+                "email": "tristan@theupsidedown.co.au"
+            },
+            {
+                "name": "Wolfgang",
+                "age": 34,
+                "email": "wolfgang@mozart.music"
+            },
+            {
+                "name": "Natasha",
+                "age": 27,
+                "email": "natasha@beer.de"
+            }
+        ]
+      },
+      {
+        "name": "Hamsterdance",
+        "lat": 52.3680,
+        "lng": 4.9036,
+        "open": true,
+        "employees": [
+            {
+                "name": "Ellen",
+                "age": 37,
+                "email": "ellen@kpn.nl"
+            },
+            {
+                "name": "Daniël",
+                "age": 28,
+                "email": "vdw@daniel.pizza"
+            }
+        ],
+      },
+      {
+        "name": "London",
+        "lat": 51.5074,
+        "lng": 0.1278,
+        "open": false,
+        "employees":  [
+            {
+                "name": "Harry",
+                "age": 21,
+                "email": "harry@wotsallthisthen.co.uk"
+            }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Dunder Mifflin",
+    "founded": "24-3-2005",
+    "offices": [
+      {
+        "name": "Scranton",
+        "lat": 41.4090,
+        "lng": -75.6624,
+        "open": false,
+        "employees": [
+          {
+            "name": "Michael",
+            "age": 50,
+            "email": "worldsgreatestboss@dundermifflin.com"
+          },
+          {
+            "name": "Dwight",
+            "age": 45,
+            "email": "dwight@beets.biz"
+          },
+          {
+            "name": "Jim",
+            "age": 29,
+            "email": "smirk@dundermifflin.com"
+          },
+          {
+            "name": "Pam",
+            "age": 26,
+            "email": "admin@dudnermifflin.com"
+          }
+        ]
+      }
+    ]
+  }
+]

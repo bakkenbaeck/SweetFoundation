@@ -7,124 +7,46 @@
 
 import CoreData
 import SweetFoundation
+import XCTest
 
-struct SampleDataFactory {
+class SampleDataFactory {
     
-    // MARK: - Dummy data
-    
-    static let sampleEmailDomains = [
-        "gmail.com",
-        "bakkenbaeck.no",
-        "yahoo.com",
-        "seemslegit.biz",
-        "vanity.io",
-        "wotsallthisthen.co.uk",
-    ]
-    
-    static var foundingDate: Date {
-        return TestDateFactory.dateFrom(day: 1, month: 1, year: 2008)
+    enum Error: Swift.Error {
+        case couldntParseJSON(String)
+        case couldntParseDate
     }
-    
-    private static let bbOffices = [
-        [
-            "name": "HQ",
-            "lat": 59.9139,
-            "lng": 10.7522,
-            "open": true
-        ],
-        [
-            "name": "Bonn",
-            "lat": 50.7374,
-            "lng": 7.0982,
-            "open": true
-        ],
-        [
-            "name": "Hamsterdance",
-            "lat": 52.3680,
-            "lng": 4.9036,
-            "open": true
-        ],
-        [
-            "name": "London",
-            "lat": 51.5074,
-            "lng": 0.1278,
-            "open": false
-        ]
-    ]
-    
-    private static let employeesByOffice = [
-        [
-            [
-                "name": "Johan",
-                "age": 99
-            ],
-            [
-                "name": "Tobias",
-                "age": 12
-            ],
-            [
-                "name": "Ole Martin",
-                "age": 36
-            ],
-            [
-                "name": "Yuliia",
-                "age": 24
-            ]
-        ],
-        [
-            [
-                "name": "Tristan",
-                "age": 28
-            ],
-            [
-                "name": "Wolfgang",
-                "age": 34
-            ],
-            [
-                "name": "Natasha",
-                "age": 27
-            ]
-        ],
-        [
-            [
-                "name": "Ellen",
-                "age": 37
-            ],
-            [
-                "name": "Daniël",
-                "age": 28
-            ]
-        ],
-        [
-            [
-                "name": "Harry",
-                "age": 21
-            ]
-        ]
-    ]
     
     // MARK: - Actual data creation
     
-    static func loadSampleData(using context: NSManagedObjectContext) {
+    static func loadSampleData(using context: NSManagedObjectContext, file: StaticString = #file,
+                               line: UInt = #line) {
+        guard let path = Bundle(for: self).path(forResource: "SampleData", ofType: "json") else {
+            XCTFail("Failed to get path for sample data file!",
+                    file: file,
+                    line: line)
+            return
+        }
         
-        _ = self.createSampleCompany(in: context,
-                                     named: "Dunder Mifflin",
-                                     founded: TestDateFactory.dateFrom(day: 24, month: 3, year: 2005))
+        let url = URL(fileURLWithPath: path)
         
-        let company = self.createSampleCompany(in: context,
-                                               named: "Bakken & Bæck",
-                                               founded: self.foundingDate)
-        
-        let offices = bbOffices.map { self.createSampleOffice(in: context,
-                                                              of: company,
-                                                              using: $0) }
-        
-        for (index, office) in offices.enumerated() {
-            let employeesOfOffice = self.employeesByOffice[index]
+        do {
+            let data = try Data(contentsOf: url)
+            let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
+            guard let companyArray = json as? [[AnyHashable: Any]] else {
+                XCTFail("Could not get proper json type",
+                        file: file,
+                        line: line)
+                return
+            }
             
-            employeesOfOffice.forEach { self.createSampleEmployee(in: context,
-                                                                  at: office,
-                                                                  using: $0) }
+            try companyArray.forEach {
+                try self.createSampleCompany(in: context, from: $0)
+            }
+        } catch {
+            XCTFail("Could not load data: \(error)",
+                    file: file,
+                    line: line)
+            return
         }
         
         context.performAndWait {
@@ -132,27 +54,62 @@ struct SampleDataFactory {
         }        
     }
     
+    @discardableResult
     private static func createSampleCompany(in context: NSManagedObjectContext,
-                                            named name: String,
-                                            founded: Date) -> Company {
+                                            from dictionary: [AnyHashable: Any]) throws -> Company {
         let company = Company(context: context)
         
+        guard
+            let name = dictionary["name"] as? String,
+            let dateFoundedString = dictionary["founded"] as? String,
+            let officeDicts = dictionary["offices"] as? [[AnyHashable: Any]] else {
+                throw Error.couldntParseJSON("Parsing company")
+        }
+        
         company.name = name
-        company.dateFounded = founded
+    
+        let bits = dateFoundedString
+            .components(separatedBy: "-")
+            .compactMap { Int($0) }
+        
+        guard bits.count == 3 else {
+            throw Error.couldntParseDate
+        }
+        
+        company.dateFounded = TestDateFactory.dateFrom(day: bits[0], month: bits[1], year: bits[2])
+        
+        try officeDicts.forEach {
+            try self.createSampleOffice(in: context, of: company, using: $0)
+        }
         
         return company
     }
     
+    @discardableResult
     private static func createSampleOffice(in context: NSManagedObjectContext,
                                            of company: Company,
-                                           using dictionary: [AnyHashable: Any]) -> Office {
+                                           using dictionary: [AnyHashable: Any]) throws -> Office {
         let office = Office(context: context)
         
         office.company = company
-        office.name = (dictionary["name"] as? String)!
-        office.latitude = (dictionary["lat"] as? Double)!
-        office.longitude = (dictionary["lng"] as? Double)!
-        office.isOpen = (dictionary["open"] as? Bool)!
+        
+        guard
+            let name = dictionary["name"] as? String,
+            let latitude = dictionary["lat"] as? Double,
+            let longitude = dictionary["lng"] as? Double,
+            let isOpen = dictionary["open"] as? Bool,
+            let employeeDicts = dictionary["employees"] as? [[AnyHashable: Any]] else {
+                throw Error.couldntParseJSON("One of the offices")
+        }
+        
+        office.name = name
+        office.latitude = latitude
+        office.longitude = longitude
+        office.isOpen = isOpen
+        
+        try employeeDicts.forEach {
+            try self.createSampleEmployee(in: context, at: office, using: $0)
+        }
         
         return office
     }
@@ -160,24 +117,21 @@ struct SampleDataFactory {
     @discardableResult
     private static func createSampleEmployee(in context: NSManagedObjectContext,
                                              at office: Office,
-                                             using dictionary: [AnyHashable: Any]) -> Employee {
+                                             using dictionary: [AnyHashable: Any]) throws -> Employee {
         let employee = Employee(context: context)
         
         employee.office = office
-        employee.name = (dictionary["name"] as? String)!
-        employee.age = Int16((dictionary["age"] as? Int)!)
-
-        guard let randomDomain = self.sampleEmailDomains.randomElement() else {
-            // Employee just won't have an email address
-            return employee
+        
+        guard
+            let name = dictionary["name"] as? String,
+            let age = dictionary["age"] as? Int16,
+            let email = dictionary["email"] as? String else {
+                throw Error.couldntParseJSON("One of the employees")
         }
         
-        if let name = employee.name {
-            let strippedDiacritics = name.folding(options: .diacriticInsensitive, locale: .current)
-            let nameWithoutSpaces = strippedDiacritics.replacingOccurrences(of: " ", with: "")
-            
-            employee.email = "\(nameWithoutSpaces)@\(randomDomain)"
-        }
+        employee.name = name
+        employee.age = age
+        employee.email = email
         
         return employee
     }
