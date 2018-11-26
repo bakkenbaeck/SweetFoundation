@@ -63,12 +63,17 @@
             {
                 "name": "Ellen",
                 "age": 37,
-                "email": "ellen@kpn.nl"
+                "email": "ellen@weed.nl"
             },
             {
                 "name": "Daniël",
                 "age": 28,
                 "email": "vdw@daniel.pizza"
+            },
+            {
+                "name": "Luuk",
+                "age": 25,
+                "email": "luuk@iinteerneet.nl"
             }
         ],
       },

@@ -15,6 +15,10 @@ public protocol Property {
 public protocol EquatableProperty: Property {}
 public protocol ComparableProperty: EquatableProperty {}
 
+extension NSObject: ComparableProperty {
+    public var _object: AnyObject { return self }
+}
+
 extension Bool: ComparableProperty {
     public var _object: AnyObject { return NSNumber(value: self) }
 }
@@ -43,14 +47,22 @@ extension String: ComparableProperty {
     public var _object: AnyObject { return self as NSString }
 }
 
+extension KeyPath {
+    
+    public var toNSString: NSString {
+        return self._kvcKeyPathString! as NSString
+    }
+}
+
 extension NSPredicate {
     
     // https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/Predicates/Articles/pSyntax.html
-    // NOTE: MATCHES gets its own specific initializer since it takes a regular expression.
+    // The following operators get their own factory initializers:
+    // - MATCHES, since it takes a regular expression.
+    // - BETWEEN, since it takes multiple parameters.
     public enum PredicateOperator: String {
         case beginsWith = "BEGINSWITH"
         case beginsWithIgnoringCaseAndDiacritics = "BEGINSWITH[cd]"
-        case between = "BETWEEN"
         case contains = "CONTAINS"
         case containsIgnoringCaseAndDiacritics = "CONTAINS[cd]"
         case endsWith = "ENDSWITH"
@@ -59,18 +71,12 @@ extension NSPredicate {
         case equalsIgnoringCaseAndDiacritics = "==[cd]"
         case greaterThan = ">"
         case greaterThanOrEqualTo = ">="
-        case `in` = "IN"
         case lessThan = "<"
         case lessThanOrEqualTo = "<="
         case like = "LIKE"
         case likeIgnoringCaseAndDiacritics = "LIKE[cd]"
         case notEqual = "!="
-    }
-    
-    public enum AggregatePredicateOperatior: String {
-        case any = "ANY"
-        case all = "ALL"
-        case none = "NONE"
+        case notEqualIgnoringCaseAndDiacritics = "!=[cd]"
     }
     
     public convenience init<Root, Property: ComparableProperty>(keyPath: KeyPath<Root, Property?>,
@@ -78,7 +84,7 @@ extension NSPredicate {
                                                                 value: Property) {
         self.init(format: "%K \(operatorType.rawValue) %@",
             argumentArray: [
-                keyPath._kvcKeyPathString! as NSString,
+                keyPath.toNSString,
                 value._object
             ])
     }
@@ -88,29 +94,92 @@ extension NSPredicate {
                                                                 value: Property) {
         self.init(format: "%K \(operatorType.rawValue) %@",
             argumentArray: [
-                keyPath._kvcKeyPathString! as NSString,
+                keyPath.toNSString,
                 value._object
             ])
     }
         
-    public static func matches<Root, Property: ComparableProperty>(_ regex: NSRegularExpression, for keyPath: KeyPath<Root, Property>) -> NSPredicate {
-        return NSPredicate(format: "%K MATCHES %@",
-                           argumentArray: [
-                              keyPath._kvcKeyPathString! as NSString,
-                              regex
-                           ])
+    public static func matches<Root, Property: ComparableProperty>(_ regex: NSRegularExpression,
+                                                                   for keyPath: KeyPath<Root, Property>) -> NSPredicate {
+        return NSPredicate(
+            format: "%K MATCHES %@",
+            argumentArray: [
+                keyPath.toNSString,
+                regex.pattern
+            ])
     }
     
-    public convenience init<Root, Property: ComparableProperty>(aggregate: AggregatePredicateOperatior,
-                                                                keyPath: KeyPath<Root, Property>,
-                                                                operatorType: PredicateOperator = .equals,
-                                                                value: Property) {
-        self.init(format: "%@ %K %@ %@",
-                  argumentArray: [
-                    aggregate.rawValue,
-                    keyPath._kvcKeyPathString! as NSString,
-                    operatorType.rawValue,
-                    value._object
-                  ])
+    public static func matches<Root, Property: ComparableProperty>(_ regex: NSRegularExpression,
+                                                                   for keyPath: KeyPath<Root, Property?>) -> NSPredicate {
+        return NSPredicate(
+            format: "%K MATCHES %@",
+            argumentArray: [
+                keyPath.toNSString,
+                regex.pattern
+            ])
+    }
+    
+    public static func between<Root, Property: ComparableProperty>(_ firstValue: Property,
+                                                                   and secondValue: Property,
+                                                                   for keyPath: KeyPath<Root, Property>) -> NSPredicate{
+        // BETWEEN doesn't work with floating point numbers, so it's time for a hack!
+        if firstValue is Float || firstValue is Double || firstValue is NSDecimalNumber {
+            return self.fakeBetween(firstValue, and: secondValue, for: keyPath)
+        } else {
+            return NSPredicate(
+                format: "%K BETWEEN %@",
+                argumentArray: [
+                    keyPath.toNSString,
+                    [ firstValue._object, secondValue._object ]
+                ])
+        }
+    }
+    
+    public static func between<Root, Property: ComparableProperty>(_ firstValue: Property,
+                                                                   and secondValue: Property,
+                                                                   for keyPath: KeyPath<Root, Property?>) -> NSPredicate {
+        // BETWEEN doesn't work with floating point numbers, so it's time for a hack!
+        if firstValue is Float || firstValue is Double || firstValue is NSDecimalNumber {
+            return self.fakeOptionalBetween(firstValue, and: secondValue, for: keyPath)
+        } else {
+            return NSPredicate(
+                format: "%K BETWEEN %@",
+                argumentArray: [
+                    keyPath.toNSString,
+                    [ firstValue._object, secondValue._object ]
+                ])
+        }
+    }
+    
+    private static func fakeBetween<Root, Property: ComparableProperty>(_ firstValue: Property,
+                                                                        and secondValue: Property,
+                                                                        for keyPath: KeyPath<Root, Property>) -> NSPredicate {
+        let greaterThanOrEqualToFirst = NSPredicate(keyPath: keyPath,
+                                                    operatorType: .greaterThanOrEqualTo,
+                                                    value: firstValue)
+        let lessThanOrEqualToSecond = NSPredicate(keyPath: keyPath,
+                                                  operatorType: .lessThanOrEqualTo,
+                                                  value: secondValue)
+        
+        return NSCompoundPredicate(andPredicateWithSubpredicates: [
+            greaterThanOrEqualToFirst,
+            lessThanOrEqualToSecond
+            ])
+    }
+    
+    private static func fakeOptionalBetween<Root, Property: ComparableProperty>(_ firstValue: Property,
+                                                                        and secondValue: Property,
+                                                                        for keyPath: KeyPath<Root, Property?>) -> NSPredicate {
+        let greaterThanOrEqualToFirst = NSPredicate(keyPath: keyPath,
+                                                    operatorType: .greaterThanOrEqualTo,
+                                                    value: firstValue)
+        let lessThanOrEqualToSecond = NSPredicate(keyPath: keyPath,
+                                                  operatorType: .lessThanOrEqualTo,
+                                                  value: secondValue)
+        
+        return NSCompoundPredicate(andPredicateWithSubpredicates: [
+            greaterThanOrEqualToFirst,
+            lessThanOrEqualToSecond
+        ])
     }
 }

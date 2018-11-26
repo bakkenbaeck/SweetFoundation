@@ -40,7 +40,25 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      codeCoverageEnabled = "YES"
+      onlyGenerateCoverageForSpecifiedTargets = "YES"
       shouldUseLaunchSchemeArgsEnv = "YES">
+      <CodeCoverageTargets>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "9F63ADA91DA584F600A9FEEF"
+            BuildableName = "SweetFoundation.framework"
+            BlueprintName = "SweetFoundation"
+            ReferencedContainer = "container:Demo.xcodeproj">
+         </BuildableReference>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "9F2018C21DFFF14E000FF81F"
+            BuildableName = "SweetFoundationMac.framework"
+            BlueprintName = "SweetFoundationMac"
+            ReferencedContainer = "container:Demo.xcodeproj">
+         </BuildableReference>
+      </CodeCoverageTargets>
       <Testables>
          <TestableReference
             skipped = "NO">
