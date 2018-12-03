@@ -1,10 +1,3 @@
-//
-//  NSPredicate+Sweetness.swift
-//  SweetFoundation
-//
-//  Created by Ellen Shapiro on 11/23/18.
-//
-
 import Foundation
 
 // Inspired by https://github.com/kishikawakatsumi/Kuery/blob/master/Sources/Kuery/ManagedObjectProperty.swift
