@@ -117,7 +117,7 @@ extension NSPredicate {
                                                                    for keyPath: KeyPath<Root, Property>) -> NSPredicate{
         // BETWEEN doesn't work with floating point numbers, so it's time for a hack!
         if firstValue is Float || firstValue is Double || firstValue is NSDecimalNumber {
-            return self.fakeBetween(firstValue, and: secondValue, for: keyPath)
+            return self.floatCompatibleBetween(firstValue, and: secondValue, for: keyPath)
         } else {
             return NSPredicate(
                 format: "%K BETWEEN %@",
@@ -133,7 +133,7 @@ extension NSPredicate {
                                                                    for keyPath: KeyPath<Root, Property?>) -> NSPredicate {
         // BETWEEN doesn't work with floating point numbers, so it's time for a hack!
         if firstValue is Float || firstValue is Double || firstValue is NSDecimalNumber {
-            return self.fakeOptionalBetween(firstValue, and: secondValue, for: keyPath)
+            return self.floatCompatibleOptionalBetween(firstValue, and: secondValue, for: keyPath)
         } else {
             return NSPredicate(
                 format: "%K BETWEEN %@",
@@ -144,9 +144,9 @@ extension NSPredicate {
         }
     }
     
-    private static func fakeBetween<Root, Property: ComparableProperty>(_ firstValue: Property,
-                                                                        and secondValue: Property,
-                                                                        for keyPath: KeyPath<Root, Property>) -> NSPredicate {
+    private static func floatCompatibleBetween<Root, Property: ComparableProperty>(_ firstValue: Property,
+                                                                                   and secondValue: Property,
+                                                                                   for keyPath: KeyPath<Root, Property>) -> NSPredicate {
         let greaterThanOrEqualToFirst = NSPredicate(keyPath: keyPath,
                                                     operatorType: .greaterThanOrEqualTo,
                                                     value: firstValue)
@@ -160,9 +160,9 @@ extension NSPredicate {
             ])
     }
     
-    private static func fakeOptionalBetween<Root, Property: ComparableProperty>(_ firstValue: Property,
-                                                                        and secondValue: Property,
-                                                                        for keyPath: KeyPath<Root, Property?>) -> NSPredicate {
+    private static func floatCompatibleOptionalBetween<Root, Property: ComparableProperty>(_ firstValue: Property,
+                                                                                           and secondValue: Property,
+                                                                                           for keyPath: KeyPath<Root, Property?>) -> NSPredicate {
         let greaterThanOrEqualToFirst = NSPredicate(keyPath: keyPath,
                                                     operatorType: .greaterThanOrEqualTo,
                                                     value: firstValue)
