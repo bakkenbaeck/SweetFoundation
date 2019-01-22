@@ -9,6 +9,16 @@
 /* Begin PBXBuildFile section */
 		14E527B01E9294F3009B22FD /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E527AF1E9294F3009B22FD /* Tests.swift */; };
 		14E527B21E9294F3009B22FD /* SweetFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F63ADAA1DA584F600A9FEEF /* SweetFoundation.framework */; };
+		9B02263C21B55CCE00575F0F /* NSManagedObjectContext+Sweetness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B177B5D21A886A1002DCA66 /* NSManagedObjectContext+Sweetness.swift */; };
+		9B02263D21B55CCE00575F0F /* NSManagedObject+Sweetness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B177B5721A875EA002DCA66 /* NSManagedObject+Sweetness.swift */; };
+		9B177B4C21A83B67002DCA66 /* NSPredicate+Sweetness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B177B4B21A83B67002DCA66 /* NSPredicate+Sweetness.swift */; };
+		9B177B4E21A85C75002DCA66 /* PredicateKeyPathTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B177B4D21A85C75002DCA66 /* PredicateKeyPathTests.swift */; };
+		9B177B5221A85D20002DCA66 /* SampleData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9B177B5021A85D20002DCA66 /* SampleData.xcdatamodeld */; };
+		9B177B5421A85F35002DCA66 /* SampleDataFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B177B5321A85F35002DCA66 /* SampleDataFactory.swift */; };
+		9B177B5621A85F67002DCA66 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B177B5521A85F67002DCA66 /* CoreDataManager.swift */; };
+		9B177B5C21A87859002DCA66 /* TestDateFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B177B5B21A87859002DCA66 /* TestDateFactory.swift */; };
+		9B177B6021A895CA002DCA66 /* NSPredicate+Sweetness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B177B4B21A83B67002DCA66 /* NSPredicate+Sweetness.swift */; };
+		9B177B6421ABF8EA002DCA66 /* SampleData.json in Resources */ = {isa = PBXBuildFile; fileRef = 9B177B6321ABF8EA002DCA66 /* SampleData.json */; };
 		9F2018D31DFFF14E000FF81F /* SweetFoundationMac.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F2018C51DFFF14E000FF81F /* SweetFoundationMac.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9F2018DB1DFFF1CD000FF81F /* DispatchQueue+Sweetness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB6A8971D7D5DC60093ACED /* DispatchQueue+Sweetness.swift */; };
 		9F2018DC1DFFF1CD000FF81F /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB915251DC384710071FA78 /* Math.swift */; };
@@ -21,8 +31,6 @@
 		9F63ADAE1DA584F600A9FEEF /* SweetFoundation.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F63ADAC1DA584F600A9FEEF /* SweetFoundation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9F6AEAF41DBE293C0027A254 /* DispatchQueue+Sweetness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB6A8971D7D5DC60093ACED /* DispatchQueue+Sweetness.swift */; };
 		9FB915271DC384710071FA78 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB915251DC384710071FA78 /* Math.swift */; };
-		9FBF304E1E2CFD6900BA755D /* Array+Sweetness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBF304D1E2CFD6900BA755D /* Array+Sweetness.swift */; };
-		9FBF304F1E2CFDB300BA755D /* Array+Sweetness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBF304D1E2CFD6900BA755D /* Array+Sweetness.swift */; };
 		D197B25DDCC5DCBF1F565D8D /* URLRequest+Sweetness.swift in Sources */ = {isa = PBXBuildFile; fileRef = D197B9193F8E0BC299E4BEA9 /* URLRequest+Sweetness.swift */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +56,15 @@
 		14F393961CC6517E00616696 /* LICENSE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
 		3376A2D7215516ED00320284 /* SweetFoundation.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = SweetFoundation.podspec; sourceTree = "<group>"; };
 		3376A2D821551BEE00320284 /* config.yml */ = {isa = PBXFileReference; lastKnownFileType = text; name = config.yml; path = .circleci/config.yml; sourceTree = "<group>"; };
+		9B177B4B21A83B67002DCA66 /* NSPredicate+Sweetness.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSPredicate+Sweetness.swift"; sourceTree = "<group>"; };
+		9B177B4D21A85C75002DCA66 /* PredicateKeyPathTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredicateKeyPathTests.swift; sourceTree = "<group>"; };
+		9B177B5121A85D20002DCA66 /* SampleData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SampleData.xcdatamodel; sourceTree = "<group>"; };
+		9B177B5321A85F35002DCA66 /* SampleDataFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleDataFactory.swift; sourceTree = "<group>"; };
+		9B177B5521A85F67002DCA66 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		9B177B5721A875EA002DCA66 /* NSManagedObject+Sweetness.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+Sweetness.swift"; sourceTree = "<group>"; };
+		9B177B5B21A87859002DCA66 /* TestDateFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDateFactory.swift; sourceTree = "<group>"; };
+		9B177B5D21A886A1002DCA66 /* NSManagedObjectContext+Sweetness.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Sweetness.swift"; sourceTree = "<group>"; };
+		9B177B6321ABF8EA002DCA66 /* SampleData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SampleData.json; sourceTree = "<group>"; };
 		9F2018C31DFFF14E000FF81F /* SweetFoundationMac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SweetFoundationMac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F2018C51DFFF14E000FF81F /* SweetFoundationMac.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SweetFoundationMac.h; sourceTree = "<group>"; };
 		9F2018C61DFFF14E000FF81F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -59,7 +76,6 @@
 		9F63ADAD1DA584F600A9FEEF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9FB6A8971D7D5DC60093ACED /* DispatchQueue+Sweetness.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Sweetness.swift"; sourceTree = "<group>"; };
 		9FB915251DC384710071FA78 /* Math.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Math.swift; sourceTree = "<group>"; };
-		9FBF304D1E2CFD6900BA755D /* Array+Sweetness.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Sweetness.swift"; sourceTree = "<group>"; };
 		D197B9193F8E0BC299E4BEA9 /* URLRequest+Sweetness.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URLRequest+Sweetness.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -143,9 +159,9 @@
 				9FB915251DC384710071FA78 /* Math.swift */,
 				9F2018DE1DFFF2D7000FF81F /* Data+Sweetness.swift */,
 				9F2018E11DFFF2EA000FF81F /* String+Sweetness.swift */,
-				9FBF304D1E2CFD6900BA755D /* Array+Sweetness.swift */,
 				9F4C3A7E1E5D9C8D009478F7 /* Collection+Sweetness.swift */,
 				D197B9193F8E0BC299E4BEA9 /* URLRequest+Sweetness.swift */,
+				9B177B4B21A83B67002DCA66 /* NSPredicate+Sweetness.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -153,10 +169,26 @@
 		14E527AE1E9294F3009B22FD /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				9B177B5721A875EA002DCA66 /* NSManagedObject+Sweetness.swift */,
+				9B177B5D21A886A1002DCA66 /* NSManagedObjectContext+Sweetness.swift */,
+				9B177B4F21A85D0A002DCA66 /* SampleData */,
 				14E527AF1E9294F3009B22FD /* Tests.swift */,
+				9B177B4D21A85C75002DCA66 /* PredicateKeyPathTests.swift */,
 				14E527B11E9294F3009B22FD /* Info.plist */,
 			);
 			path = Tests;
+			sourceTree = "<group>";
+		};
+		9B177B4F21A85D0A002DCA66 /* SampleData */ = {
+			isa = PBXGroup;
+			children = (
+				9B177B5021A85D20002DCA66 /* SampleData.xcdatamodeld */,
+				9B177B6321ABF8EA002DCA66 /* SampleData.json */,
+				9B177B5521A85F67002DCA66 /* CoreDataManager.swift */,
+				9B177B5321A85F35002DCA66 /* SampleDataFactory.swift */,
+				9B177B5B21A87859002DCA66 /* TestDateFactory.swift */,
+			);
+			path = SampleData;
 			sourceTree = "<group>";
 		};
 		9F2018C41DFFF14E000FF81F /* SweetFoundationMac */ = {
@@ -309,6 +341,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B177B6421ABF8EA002DCA66 /* SampleData.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -333,6 +366,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B177B5C21A87859002DCA66 /* TestDateFactory.swift in Sources */,
+				9B177B4E21A85C75002DCA66 /* PredicateKeyPathTests.swift in Sources */,
+				9B177B5221A85D20002DCA66 /* SampleData.xcdatamodeld in Sources */,
+				9B02263D21B55CCE00575F0F /* NSManagedObject+Sweetness.swift in Sources */,
+				9B02263C21B55CCE00575F0F /* NSManagedObjectContext+Sweetness.swift in Sources */,
+				9B177B5421A85F35002DCA66 /* SampleDataFactory.swift in Sources */,
+				9B177B5621A85F67002DCA66 /* CoreDataManager.swift in Sources */,
 				14E527B01E9294F3009B22FD /* Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -344,7 +384,7 @@
 				9F2018DB1DFFF1CD000FF81F /* DispatchQueue+Sweetness.swift in Sources */,
 				9F2018E01DFFF2D7000FF81F /* Data+Sweetness.swift in Sources */,
 				9F4C3A801E5D9C8D009478F7 /* Collection+Sweetness.swift in Sources */,
-				9FBF304F1E2CFDB300BA755D /* Array+Sweetness.swift in Sources */,
+				9B177B6021A895CA002DCA66 /* NSPredicate+Sweetness.swift in Sources */,
 				9F2018DC1DFFF1CD000FF81F /* Math.swift in Sources */,
 				9F2018E31DFFF2EA000FF81F /* String+Sweetness.swift in Sources */,
 			);
@@ -357,7 +397,7 @@
 				9F6AEAF41DBE293C0027A254 /* DispatchQueue+Sweetness.swift in Sources */,
 				9F2018DF1DFFF2D7000FF81F /* Data+Sweetness.swift in Sources */,
 				9F4C3A7F1E5D9C8D009478F7 /* Collection+Sweetness.swift in Sources */,
-				9FBF304E1E2CFD6900BA755D /* Array+Sweetness.swift in Sources */,
+				9B177B4C21A83B67002DCA66 /* NSPredicate+Sweetness.swift in Sources */,
 				9FB915271DC384710071FA78 /* Math.swift in Sources */,
 				9F2018E21DFFF2EA000FF81F /* String+Sweetness.swift in Sources */,
 				D197B25DDCC5DCBF1F565D8D /* URLRequest+Sweetness.swift in Sources */,
@@ -678,6 +718,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		9B177B5021A85D20002DCA66 /* SampleData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				9B177B5121A85D20002DCA66 /* SampleData.xcdatamodel */,
+			);
+			currentVersion = 9B177B5121A85D20002DCA66 /* SampleData.xcdatamodel */;
+			path = SampleData.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 146D728B1AB782920058798C /* Project object */;
 }

@@ -3,15 +3,6 @@ import XCTest
 
 class Tests: XCTestCase {
 
-    // Not sure how to test that the type is correctly inferred.
-    // This pretty much just ensures that the property is accessible and non-nil for a non-empty array.
-    func testArrayAny() {
-        let array: Array = ["Some", "Value", "Random"]
-        let value = array.any
-
-        XCTAssertNotNil(value)
-    }
-
     func testMath() {
         let radians = Math.degreesToRadians(45)
         XCTAssertEqual(radians, 0.785, accuracy: 0.001)
