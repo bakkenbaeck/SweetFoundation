@@ -302,7 +302,7 @@ class PredicateKeyPathTests: XCTestCase {
         
         let officeResult = try self.moc.fetchAll(Office.self,
                                                  sortDescriptors: self.sortOfficesByName,
-                                            predicate: notCompanyPredicate)
+                                                 predicate: notCompanyPredicate)
         
         XCTAssertEqual(officeResult.count, 4)
         XCTAssertEqual(officeResult.map { $0.name }, [
@@ -317,8 +317,8 @@ class PredicateKeyPathTests: XCTestCase {
     
     func testGreaterThanPredicateWithDouble() throws {
         let longOver0point2Predicate = NSPredicate(keyPath: \Office.longitude,
-                                             operatorType: .greaterThan,
-                                             value: 0.2)
+                                                   operatorType: .greaterThan,
+                                                   value: 0.2)
         
         let fetchedOffices = try self.moc.fetchAll(Office.self,
                                                    sortDescriptors: self.sortOfficesByName,
@@ -563,9 +563,9 @@ class PredicateKeyPathTests: XCTestCase {
         
         XCTAssertEqual(fetchedEmployees.count, 3)
         XCTAssertEqual(fetchedEmployees.map { $0.name }, [
-          "Dwight",
-          "Ellen",
-          "Michael"
+            "Dwight",
+            "Ellen",
+            "Michael"
         ])
     }
     
