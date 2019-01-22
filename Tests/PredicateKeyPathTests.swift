@@ -541,6 +541,97 @@ class PredicateKeyPathTests: XCTestCase {
         ])
     }
     
+    // MARK: - In
+    
+    func testInArrayWithDates() throws {
+        let dateArray = [self.bbFoundingDate]
+        let inArrayPredicate = NSPredicate.isValue(for: \Company.dateFounded, in: dateArray)
+
+        let fetchedCompanies = try self.moc.fetchAll(Company.self,
+                                                     sortDescriptors: self.sortCompaniesByName,
+                                                     predicate: inArrayPredicate)
+        
+        XCTAssertEqual(fetchedCompanies.count, 1)
+        XCTAssertEqual(fetchedCompanies.map { $0.name }, [ "Bakken & Bæck" ])
+    }
+    
+    func testInSetWithDates() throws {
+        let dateSet = Set([self.dunderMifflinFoundingDate])
+        let inSetPredicate = NSPredicate.isValue(for: \Company.dateFounded, in: dateSet)
+        
+        let fetchedCompanies = try self.moc.fetchAll(Company.self,
+                                                     sortDescriptors: self.sortCompaniesByName,
+                                                     predicate: inSetPredicate)
+        
+        XCTAssertEqual(fetchedCompanies.count, 1)
+        XCTAssertEqual(fetchedCompanies.map { $0.name }, [ "Dunder Mifflin" ])
+    }
+    
+    func testInArrayWithIntegers() throws {
+        let array: [Int16] = [ 28, 37 ]
+        let inArrayPredicate = NSPredicate.isValue(for: \Employee.age,
+                                                   in: array)
+        
+        let fetchedEmployees = try self.moc.fetchAll(Employee.self,
+                                                     sortDescriptors: self.sortEmployeesByName,
+                                                     predicate: inArrayPredicate)
+        
+        XCTAssertEqual(fetchedEmployees.count, 3)
+        XCTAssertEqual(fetchedEmployees.map { $0.name }, [
+            "Daniël",
+            "Ellen",
+            "Tristan"
+        ])
+    }
+    
+    func testInSetWithIntegers() throws {
+        let set: Set<Int16> = Set([ 99, 12 ])
+        let inSetPredicate = NSPredicate.isValue(for: \Employee.age,
+                                                 in: set)
+        
+        let fetchedEmployees = try self.moc.fetchAll(Employee.self,
+                                                     sortDescriptors: self.sortEmployeesByName,
+                                                     predicate: inSetPredicate)
+        
+        XCTAssertEqual(fetchedEmployees.count, 2)
+        XCTAssertEqual(fetchedEmployees.map { $0.name }, [
+            "Johan",
+            "Tobias"
+        ])
+    }
+    
+    
+    func testInArrayWithStrings() throws {
+        let array = [ "Pam", "Ellen" ]
+        let inArrayPredicate = NSPredicate.isValue(for: \Employee.name,
+                                                   in: array)
+        
+        let fetchedEmployees = try self.moc.fetchAll(Employee.self,
+                                                     sortDescriptors: self.sortEmployeesByName,
+                                                     predicate: inArrayPredicate)
+        
+        XCTAssertEqual(fetchedEmployees.count, 2)
+        XCTAssertEqual(fetchedEmployees.map { $0.name }, [
+            "Ellen",
+            "Pam"
+        ])
+    }
+    
+    func testInSetWithStrings() throws {
+        let set = Set([ "Daniël", "Michael" ])
+        let inSetPredicate = NSPredicate.isValue(for: \Employee.name, in: set)
+        
+        let fetchedEmployees = try self.moc.fetchAll(Employee.self,
+                                                     sortDescriptors: self.sortEmployeesByName,
+                                                     predicate: inSetPredicate)
+        
+        XCTAssertEqual(fetchedEmployees.count, 2)
+        XCTAssertEqual(fetchedEmployees.map { $0.name }, [
+            "Daniël",
+            "Michael"
+        ])
+    }
+    
     // MARK: - Between
     
     func testBetweenWithDates() throws {
