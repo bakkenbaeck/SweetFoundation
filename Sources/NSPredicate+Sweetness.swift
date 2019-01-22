@@ -51,6 +51,7 @@ extension NSPredicate {
     
     // https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/Predicates/Articles/pSyntax.html
     // The following operators get their own factory initializers:
+    // - IN, since it takes an array or a set
     // - MATCHES, since it takes a regular expression.
     // - BETWEEN, since it takes multiple parameters.
     public enum PredicateOperator: String {
@@ -173,6 +174,38 @@ extension NSPredicate {
         return NSCompoundPredicate(andPredicateWithSubpredicates: [
             greaterThanOrEqualToFirst,
             lessThanOrEqualToSecond
+        ])
+    }
+    
+    public static func isValue<Root, Property: ComparableProperty>(for keyPath: KeyPath<Root, Property>,
+                                                                   in array: [Property]) -> NSPredicate {
+        return NSPredicate(format: "%K IN %@", argumentArray: [
+            keyPath.toNSString,
+            array
+        ])
+    }
+    
+    public static func isValue<Root, Property: ComparableProperty>(for keyPath: KeyPath<Root, Property?>,
+                                                                   in array: [Property]) -> NSPredicate {
+        return NSPredicate(format: "%K IN %@", argumentArray: [
+            keyPath.toNSString,
+            array
+        ])
+    }
+    
+    public static func isValue<Root, Property: ComparableProperty>(for keyPath: KeyPath<Root, Property>,
+                                                                   in set: Set<Property>) -> NSPredicate {
+        return NSPredicate(format: "%K IN %@", argumentArray: [
+            keyPath.toNSString,
+            set
+        ])
+    }
+    
+    public static func isValue<Root, Property: ComparableProperty>(for keyPath: KeyPath<Root, Property?>,
+                                                                   in set: Set<Property>) -> NSPredicate {
+        return NSPredicate(format: "%K IN %@", argumentArray: [
+            keyPath.toNSString,
+            set
         ])
     }
 }
