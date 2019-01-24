@@ -51,6 +51,7 @@ extension NSPredicate {
     
     // https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/Predicates/Articles/pSyntax.html
     // The following operators get their own factory initializers:
+    // - IN, since it takes an array or a set
     // - MATCHES, since it takes a regular expression.
     // - BETWEEN, since it takes multiple parameters.
     public enum PredicateOperator: String {
@@ -91,11 +92,15 @@ extension NSPredicate {
                 value._object
             ])
     }
-        
+    
+    // MARK: - Matches
+    
+    private static let matchesFormat = "%K MATCHES %@"
+    
     public static func matches<Root, Property: ComparableProperty>(_ regex: NSRegularExpression,
                                                                    for keyPath: KeyPath<Root, Property>) -> NSPredicate {
         return NSPredicate(
-            format: "%K MATCHES %@",
+            format: self.matchesFormat,
             argumentArray: [
                 keyPath.toNSString,
                 regex.pattern
@@ -105,12 +110,16 @@ extension NSPredicate {
     public static func matches<Root, Property: ComparableProperty>(_ regex: NSRegularExpression,
                                                                    for keyPath: KeyPath<Root, Property?>) -> NSPredicate {
         return NSPredicate(
-            format: "%K MATCHES %@",
+            format: self.matchesFormat,
             argumentArray: [
                 keyPath.toNSString,
                 regex.pattern
             ])
     }
+    
+    // MARK: - Between
+    
+    private static let betweenFormat = "%K BETWEEN %@"
     
     public static func between<Root, Property: ComparableProperty>(_ firstValue: Property,
                                                                    and secondValue: Property,
@@ -120,7 +129,7 @@ extension NSPredicate {
             return self.floatCompatibleBetween(firstValue, and: secondValue, for: keyPath)
         } else {
             return NSPredicate(
-                format: "%K BETWEEN %@",
+                format: self.betweenFormat,
                 argumentArray: [
                     keyPath.toNSString,
                     [ firstValue._object, secondValue._object ]
@@ -136,7 +145,7 @@ extension NSPredicate {
             return self.floatCompatibleOptionalBetween(firstValue, and: secondValue, for: keyPath)
         } else {
             return NSPredicate(
-                format: "%K BETWEEN %@",
+                format: self.betweenFormat,
                 argumentArray: [
                     keyPath.toNSString,
                     [ firstValue._object, secondValue._object ]
@@ -157,7 +166,7 @@ extension NSPredicate {
         return NSCompoundPredicate(andPredicateWithSubpredicates: [
             greaterThanOrEqualToFirst,
             lessThanOrEqualToSecond
-            ])
+        ])
     }
     
     private static func floatCompatibleOptionalBetween<Root, Property: ComparableProperty>(_ firstValue: Property,
@@ -174,5 +183,93 @@ extension NSPredicate {
             greaterThanOrEqualToFirst,
             lessThanOrEqualToSecond
         ])
+    }
+    
+    // MARK: - In
+    
+    private static let inFormat = "%K IN %@"
+    
+    public static func value<Root, Property: ComparableProperty>(for keyPath: KeyPath<Root, Property>,
+                                                                 isIn array: [Property]) -> NSPredicate {
+        return NSPredicate(
+            format: self.inFormat,
+            argumentArray: [
+                keyPath.toNSString,
+                array
+            ])
+    }
+    
+    public static func value<Root, Property: ComparableProperty>(for keyPath: KeyPath<Root, Property?>,
+                                                                 isIn array: [Property]) -> NSPredicate {
+        return NSPredicate(
+            format: self.inFormat,
+            argumentArray: [
+                keyPath.toNSString,
+                array
+            ])
+    }
+    
+    public static func value<Root, Property: ComparableProperty>(for keyPath: KeyPath<Root, Property>,
+                                                                 isIn set: Set<Property>) -> NSPredicate {
+        return NSPredicate(
+            format: self.inFormat,
+            argumentArray: [
+                keyPath.toNSString,
+                set
+            ])
+    }
+    
+    public static func value<Root, Property: ComparableProperty>(for keyPath: KeyPath<Root, Property?>,
+                                                                 isIn set: Set<Property>) -> NSPredicate {
+        return NSPredicate(
+            format: self.inFormat,
+            argumentArray: [
+                keyPath.toNSString,
+                set
+            ])
+    }
+    
+    // MARK: - Not in
+    
+    private static let notInFormat = "NOT (%K IN %@)"
+    
+    public static func value<Root, Property: ComparableProperty>(for keyPath: KeyPath<Root, Property>,
+                                                                 isNotIn array: [Property]) -> NSPredicate {
+        return NSPredicate(
+            format: self.notInFormat,
+            argumentArray: [
+                keyPath.toNSString,
+                array
+            ])
+    }
+    
+    public static func value<Root, Property: ComparableProperty>(for keyPath: KeyPath<Root, Property?>,
+                                                                 isNotIn array: [Property]) -> NSPredicate {
+        return NSPredicate(
+            format: self.notInFormat,
+            argumentArray: [
+                keyPath.toNSString,
+                array
+            ])
+    }
+    
+    public static func value<Root, Property: ComparableProperty>(for keyPath: KeyPath<Root, Property>,
+                                                                 isNotIn set: Set<Property>) -> NSPredicate {
+        return NSPredicate(
+            format: self.notInFormat,
+            argumentArray: [
+                keyPath.toNSString,
+                set
+            ])
+    }
+    
+    public static func value<Root, Property: ComparableProperty>(for keyPath: KeyPath<Root, Property?>,
+                                                                 isNotIn set: Set<Property>) -> NSPredicate {
+        return NSPredicate(
+            format: self.notInFormat,
+            argumentArray: [
+                keyPath.toNSString,
+                set
+            ])
     }
 }

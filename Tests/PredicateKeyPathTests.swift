@@ -302,7 +302,7 @@ class PredicateKeyPathTests: XCTestCase {
         
         let officeResult = try self.moc.fetchAll(Office.self,
                                                  sortDescriptors: self.sortOfficesByName,
-                                            predicate: notCompanyPredicate)
+                                                 predicate: notCompanyPredicate)
         
         XCTAssertEqual(officeResult.count, 4)
         XCTAssertEqual(officeResult.map { $0.name }, [
@@ -317,8 +317,8 @@ class PredicateKeyPathTests: XCTestCase {
     
     func testGreaterThanPredicateWithDouble() throws {
         let longOver0point2Predicate = NSPredicate(keyPath: \Office.longitude,
-                                             operatorType: .greaterThan,
-                                             value: 0.2)
+                                                   operatorType: .greaterThan,
+                                                   value: 0.2)
         
         let fetchedOffices = try self.moc.fetchAll(Office.self,
                                                    sortDescriptors: self.sortOfficesByName,
@@ -541,6 +541,199 @@ class PredicateKeyPathTests: XCTestCase {
         ])
     }
     
+    // MARK: - In
+    
+    func testInArrayWithDates() throws {
+        let dateArray = [self.bbFoundingDate]
+        let inArrayPredicate = NSPredicate.value(for: \Company.dateFounded, isIn: dateArray)
+
+        let fetchedCompanies = try self.moc.fetchAll(Company.self,
+                                                     sortDescriptors: self.sortCompaniesByName,
+                                                     predicate: inArrayPredicate)
+        
+        XCTAssertEqual(fetchedCompanies.count, 1)
+        XCTAssertEqual(fetchedCompanies.map { $0.name }, [ "Bakken & Bæck" ])
+    }
+    
+    func testInSetWithDates() throws {
+        let dateSet = Set([self.dunderMifflinFoundingDate])
+        let inSetPredicate = NSPredicate.value(for: \Company.dateFounded, isIn: dateSet)
+        
+        let fetchedCompanies = try self.moc.fetchAll(Company.self,
+                                                     sortDescriptors: self.sortCompaniesByName,
+                                                     predicate: inSetPredicate)
+        
+        XCTAssertEqual(fetchedCompanies.count, 1)
+        XCTAssertEqual(fetchedCompanies.map { $0.name }, [ "Dunder Mifflin" ])
+    }
+    
+    func testInArrayWithIntegers() throws {
+        let array: [Int16] = [ 28, 37 ]
+        let inArrayPredicate = NSPredicate.value(for: \Employee.age,
+                                                 isIn: array)
+        
+        let fetchedEmployees = try self.moc.fetchAll(Employee.self,
+                                                     sortDescriptors: self.sortEmployeesByName,
+                                                     predicate: inArrayPredicate)
+        
+        XCTAssertEqual(fetchedEmployees.count, 3)
+        XCTAssertEqual(fetchedEmployees.map { $0.name }, [
+            "Daniël",
+            "Ellen",
+            "Tristan"
+        ])
+    }
+    
+    func testInSetWithIntegers() throws {
+        let set: Set<Int16> = Set([ 99, 12 ])
+        let inSetPredicate = NSPredicate.value(for: \Employee.age,
+                                               isIn: set)
+        
+        let fetchedEmployees = try self.moc.fetchAll(Employee.self,
+                                                     sortDescriptors: self.sortEmployeesByName,
+                                                     predicate: inSetPredicate)
+        
+        XCTAssertEqual(fetchedEmployees.count, 2)
+        XCTAssertEqual(fetchedEmployees.map { $0.name }, [
+            "Johan",
+            "Tobias"
+        ])
+    }
+    
+    
+    func testInArrayWithStrings() throws {
+        let array = [ "Pam", "Ellen" ]
+        let inArrayPredicate = NSPredicate.value(for: \Employee.name,
+                                                 isIn: array)
+        
+        let fetchedEmployees = try self.moc.fetchAll(Employee.self,
+                                                     sortDescriptors: self.sortEmployeesByName,
+                                                     predicate: inArrayPredicate)
+        
+        XCTAssertEqual(fetchedEmployees.count, 2)
+        XCTAssertEqual(fetchedEmployees.map { $0.name }, [
+            "Ellen",
+            "Pam"
+        ])
+    }
+    
+    func testInSetWithStrings() throws {
+        let set = Set([ "Daniël", "Michael" ])
+        let inSetPredicate = NSPredicate.value(for: \Employee.name, isIn: set)
+        
+        let fetchedEmployees = try self.moc.fetchAll(Employee.self,
+                                                     sortDescriptors: self.sortEmployeesByName,
+                                                     predicate: inSetPredicate)
+        
+        XCTAssertEqual(fetchedEmployees.count, 2)
+        XCTAssertEqual(fetchedEmployees.map { $0.name }, [
+            "Daniël",
+            "Michael"
+        ])
+    }
+    
+    // MARK: - Not In
+    
+    func testNotInArrayWithDates() throws {
+        let dateArray = [self.bbFoundingDate]
+        let notInArrayPredicate = NSPredicate.value(for: \Company.dateFounded,
+                                                    isNotIn: dateArray)
+        
+        let fetchedCompanies = try self.moc.fetchAll(Company.self,
+                                                     sortDescriptors: self.sortCompaniesByName,
+                                                     predicate: notInArrayPredicate)
+        
+        XCTAssertEqual(fetchedCompanies.count, 1)
+        XCTAssertEqual(fetchedCompanies.map { $0.name }, [ "Dunder Mifflin" ])
+    }
+    
+    func testNotInSetWithDates() throws {
+        let dateSet = Set([self.dunderMifflinFoundingDate])
+        let notInSetPredicate = NSPredicate.value(for: \Company.dateFounded,
+                                                  isNotIn: dateSet)
+        
+        let fetchedCompanies = try self.moc.fetchAll(Company.self,
+                                                     sortDescriptors: self.sortCompaniesByName,
+                                                     predicate: notInSetPredicate)
+        
+        XCTAssertEqual(fetchedCompanies.count, 1)
+        XCTAssertEqual(fetchedCompanies.map { $0.name }, [ "Bakken & Bæck" ])
+    }
+    
+    func testNotInArrayWithIntegers() throws {
+        let array: [Int16] = [ 20, 21, 22, 23, 24, 25, 26, 27, 28, 29 ]
+        let notInArrayPredicate = NSPredicate.value(for: \Employee.age,
+                                                    isNotIn: array)
+        
+        let fetchedEmployees = try self.moc.fetchAll(Employee.self,
+                                                     sortDescriptors: self.sortEmployeesByName,
+                                                     predicate: notInArrayPredicate)
+        
+        XCTAssertEqual(fetchedEmployees.count, 7)
+        XCTAssertEqual(fetchedEmployees.map { $0.name }, [
+            "Dwight",
+            "Ellen",
+            "Johan",
+            "Michael",
+            "Ole Martin",
+            "Tobias",
+            "Wolfgang"
+        ])
+    }
+    
+    func testNotInSetWithIntegers() throws {
+        let set: Set<Int16> = Set([ 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39 ])
+        let notInSetPredicate = NSPredicate.value(for: \Employee.age,
+                                                  isNotIn: set)
+        
+        let fetchedEmployees = try self.moc.fetchAll(Employee.self,
+                                                     sortDescriptors: self.sortEmployeesByName,
+                                                     predicate: notInSetPredicate)
+        
+        XCTAssertEqual(fetchedEmployees.count, 4)
+        XCTAssertEqual(fetchedEmployees.map { $0.name }, [
+            "Dwight",
+            "Johan",
+            "Michael",
+            "Tobias"
+        ])
+    }
+    
+    
+    func testNotInArrayWithStrings() throws {
+        let array = [ "Bonn", "HQ" ]
+        let notInArrayPredicate = NSPredicate.value(for: \Office.name,
+                                                    isNotIn: array)
+        
+        let fetchedOffices = try self.moc.fetchAll(Office.self,
+                                                   sortDescriptors: self.sortOfficesByName,
+                                                   predicate: notInArrayPredicate)
+        
+        XCTAssertEqual(fetchedOffices.count, 3)
+        XCTAssertEqual(fetchedOffices.map { $0.name }, [
+            "Hamsterdance",
+            "London",
+            "Scranton"
+        ])
+    }
+    
+    func testNotInSetWithStrings() throws {
+        let set = Set([ "Scranton", "Hamsterdance", "Something totally different" ])
+        let notInSetPredicate = NSPredicate.value(for: \Office.name,
+                                                  isNotIn: set)
+        
+        let fetchedOffices = try self.moc.fetchAll(Office.self,
+                                                   sortDescriptors: self.sortOfficesByName,
+                                                   predicate: notInSetPredicate)
+        
+        XCTAssertEqual(fetchedOffices.count, 3)
+        XCTAssertEqual(fetchedOffices.map { $0.name }, [
+            "Bonn",
+            "HQ",
+            "London"
+        ])
+    }
+    
     // MARK: - Between
     
     func testBetweenWithDates() throws {
@@ -563,9 +756,9 @@ class PredicateKeyPathTests: XCTestCase {
         
         XCTAssertEqual(fetchedEmployees.count, 3)
         XCTAssertEqual(fetchedEmployees.map { $0.name }, [
-          "Dwight",
-          "Ellen",
-          "Michael"
+            "Dwight",
+            "Ellen",
+            "Michael"
         ])
     }
     
