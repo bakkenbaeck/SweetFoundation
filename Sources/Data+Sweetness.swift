@@ -1,7 +1,7 @@
 import Foundation
 
 public extension Data {
-    public func base64EncodedStringWithoutPadding() -> String {
+    func base64EncodedStringWithoutPadding() -> String {
         let base64 = self.base64EncodedString()
 
         if base64.hasSuffix("==") {
@@ -13,7 +13,7 @@ public extension Data {
         return base64
     }
 
-    public func hexadecimalString() -> String {
+    func hexadecimalString() -> String {
         var hexString = ""
         for byte in [UInt8](self) {
             hexString += String(format: "%02lx", byte)
